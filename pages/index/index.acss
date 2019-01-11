@@ -3,7 +3,27 @@ page {
   flex-direction: column;
   background: #f2f5f8;
 }
+
+/* 轮播图 */
+
 .slide-image {
   width: 750rpx;
   height: 400rpx;
+}
+
+/* 商城特色 */
+.feature {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 12px;
+  background-color: white;
+  color: gray;
+  line-height: 35px;
+}
+.feature-ico {
+  width: 14rpx;
+  height: 14rpx;
+  margin-right: 6rpx;
 }

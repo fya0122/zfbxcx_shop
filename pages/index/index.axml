@@ -6,3 +6,18 @@
     </swiper-item>
   </block>
 </swiper>
+<!-- 商城特色 -->
+<view class="feature">
+  <view>
+    <image class="feature-ico" src="../../resources/icon/smallIco/fang.png" mode="" />全场包邮  
+  </view>
+  <view>
+    <image class="feature-ico" src="/resources/icon/smallIco/flash.png" mode="" />先行赔付  
+  </view>
+  <view>
+    <image class="feature-ico" src="/resources/icon/smallIco/yuan.png" mode="" />7天无理由  
+  </view>
+  <view>
+    <image class="feature-ico" src="/resources/icon/smallIco/ling.png" mode="" />优先退款  
+  </view>
+</view>
