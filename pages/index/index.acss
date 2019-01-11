@@ -12,6 +12,7 @@ page {
 }
 
 /* 商城特色 */
+
 .feature {
   width: 100%;
   display: flex;
@@ -22,8 +23,44 @@ page {
   color: gray;
   line-height: 35px;
 }
+
 .feature-ico {
   width: 14rpx;
   height: 14rpx;
   margin-right: 6rpx;
+}
+
+/* 推荐商品标题 */
+
+.title-items-list {
+  background: white;
+  margin-top: 5px;
+  line-height: 35px;
+  font-size: 12px;
+  color: gray;
+}
+
+.title-tag {
+  margin-left: 15px;
+}
+
+.title-ico {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 6rpx;
+}
+
+/* 推荐商品列表 */
+
+.scroll-rec-items {
+  width: 100%;
+  /* 不需要换行的意思 */
+  white-space: nowrap;
+  background: white;
+}
+.items-cover {
+  width: 170rpx;
+  height: 250rpx;
+  margin-left: 15rpx;
+  border-radius: 3px;
 }

@@ -9,15 +9,30 @@
 <!-- 商城特色 -->
 <view class="feature">
   <view>
-    <image class="feature-ico" src="../../resources/icon/smallIco/fang.png" mode="" />全场包邮  
+    <image class="feature-ico" src="../../resources/icon/smallIco/fang.png"/>全场包邮            
   </view>
   <view>
-    <image class="feature-ico" src="/resources/icon/smallIco/flash.png" mode="" />先行赔付  
+    <image class="feature-ico" src="../../resources/icon/smallIco/flash.png"/>先行赔付            
   </view>
   <view>
-    <image class="feature-ico" src="/resources/icon/smallIco/yuan.png" mode="" />7天无理由  
+    <image class="feature-ico" src="../../resources/icon/smallIco/yuan.png"/>7天无理由            
   </view>
   <view>
-    <image class="feature-ico" src="/resources/icon/smallIco/ling.png" mode="" />优先退款  
+    <image class="feature-ico" src="../../resources/icon/smallIco/ling.png"/>优先退款            
   </view>
 </view>
+<!-- 推荐商品标题 -->
+<view class="title-items-list">
+  <view class="title-tag">
+    <image class="feature-ico" src="../../resources/icon/smallIco/rec.png"/>推荐商品      
+  </view>
+</view>
+<!-- 推荐商品列表 -->
+<scroll-view class="scroll-rec-items" scroll-x="{{true}}">
+  <image class="items-cover" src="../../resources/items/1001.png"/>
+  <image class="items-cover" src="../../resources/items/1002.png"/>
+  <image class="items-cover" src="../../resources/items/1002.png"/>
+  <image class="items-cover" src="../../resources/items/1002.png"/>
+  <image class="items-cover" src="../../resources/items/1002.png"/>
+  <image class="items-cover" src="../../resources/items/1002.png"/>
+</scroll-view>
