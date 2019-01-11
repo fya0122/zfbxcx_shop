@@ -3,6 +3,7 @@
     "pages/index/index"
   ],
   "window": {
-    "defaultTitle": "支付宝小程序_shop"
+    "defaultTitle": "慕课购物",
+    "titleBarColor": "#ffbfc7"
   }
 }

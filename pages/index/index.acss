@@ -1,0 +1,9 @@
+page {
+  display: flex;
+  flex-direction: column;
+  background: #f2f5f8;
+}
+.slide-image {
+  width: 750rpx;
+  height: 400rpx;
+}
