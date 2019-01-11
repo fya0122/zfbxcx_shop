@@ -66,6 +66,10 @@ page {
   border-radius: 3px;
 }
 
+.items-cover:last-child {
+  margin-right: 15rpx;
+}
+
 /* 商品上新 */
 
 .new-item-list {
