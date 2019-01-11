@@ -1,6 +1,3 @@
 App({
-  onLaunch(options) {
-  },
-  onShow(options) {
-  }
+  baseServerUrl: 'https://www.imoocdsp.com'
 });
