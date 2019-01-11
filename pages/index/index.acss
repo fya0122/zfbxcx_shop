@@ -58,9 +58,83 @@ page {
   white-space: nowrap;
   background: white;
 }
+
 .items-cover {
   width: 170rpx;
   height: 250rpx;
   margin-left: 15rpx;
   border-radius: 3px;
+}
+
+/* 商品上新 */
+
+.new-item-list {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.item-outter {
+  width: 350rpx;
+  margin-bottom: 10rpx;
+  padding: 6rpx 10rpx;
+}
+
+.new-item-cover {
+  width: 350rpx;
+  height: 510rpx;
+  margin-right: 10rpx;
+}
+
+.item-border {
+  height: 110rpx;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: #f2f5f8;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.tags {
+  background: #f2f5f8;
+  font-size: 11px;
+  color: gray;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  padding: 5rpx 10rpx;
+  height: 30rpx;
+}
+
+.price-border {
+  display: flex;
+  justify-content: space-between;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #f2f5f8;
+}
+
+.price {
+  margin-left: 10rpx;
+  font-size: 11px;
+  color: #ff6699;
+  margin-bottom: 10rpx;
+}
+
+.like-counts {
+  font-size: 11px;
+  margin-right: 12rpx;
+  margin-bottom: 10rpx;
+  color: gray;
+}
+
+.like-ico {
+  height: 18rpx;
+  width: 18rpx;
+  margin-left: 10rpx;
 }
