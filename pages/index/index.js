@@ -10,8 +10,6 @@ Page({
   },
   // 下拉刷新
   onPullDownRefresh () {
-    console.log(123)
-    console.log('我是下拉刷新')
     this._getSwiperData()
   },
   _getSwiperData () {
@@ -43,6 +41,7 @@ Page({
         })
       }),
       complete: (() => {
+        my.stopPullDownRefresh()
         this._getRecData() // 得到推荐的数据
       })
     });
@@ -113,7 +112,7 @@ Page({
         })
       }),
       complete: (() => {
-        my.stopPullDownRefresh()
+        console.log('接口over')
       })
     });
   }

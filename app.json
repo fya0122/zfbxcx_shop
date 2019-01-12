@@ -1,9 +1,29 @@
 {
   "pages": [
+    "pages/classify/classify",
     "pages/index/index"
   ],
   "window": {
     "defaultTitle": "imooc购物",
     "titleBarColor": "#ffbfc7"
+  },
+  "tabBar": {
+    "textColor": "#8a8a8a",
+    "selectedColor": "#ff6699",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "pages/index/index",
+        "name": "首页",
+        "icon": "resources/icon/tabBar/index.png",
+        "activeIcon": "resources/icon/tabBar/index-sel.png"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "name": "分类",
+        "icon": "resources/icon/tabBar/category.png",
+        "activeIcon": "resources/icon/tabBar/category-sel.png"
+      }
+    ]
   }
 }
