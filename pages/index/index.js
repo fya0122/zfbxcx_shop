@@ -1,5 +1,5 @@
 const app = getApp()
-Page( {
+Page({
   data: {
     imgUrls: [],
     recList: [],
@@ -7,6 +7,12 @@ Page( {
   },
   onLoad () {
     this._getSwiperData() // 得到轮播图的数据
+  },
+  // 下拉刷新
+  onPullDownRefresh () {
+    console.log(123)
+    console.log('我是下拉刷新')
+    this._getSwiperData()
   },
   _getSwiperData () {
     my.httpRequest({
@@ -105,7 +111,10 @@ Page( {
         this.setData({
           newList: []
         })
+      }),
+      complete: (() => {
+        my.stopPullDownRefresh()
       })
     });
   }
-} );
+});
