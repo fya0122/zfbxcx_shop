@@ -7,8 +7,6 @@ Page( {
   },
   onLoad () {
     this._getSwiperData() // 得到轮播图的数据
-    this._getRecData() // 得到推荐的数据
-    this._getNewData() // 得到新品的数据
   },
   _getSwiperData () {
     my.httpRequest({
@@ -37,6 +35,9 @@ Page( {
         this.setData({
           imgUrls: []
         })
+      }),
+      complete: (() => {
+        this._getRecData() // 得到推荐的数据
       })
     });
   },
@@ -67,6 +68,9 @@ Page( {
         this.setData({
           recList: []
         })
+      }),
+      complete: (() => {
+        this._getNewData() // 得到新品的数据
       })
     })
   },
