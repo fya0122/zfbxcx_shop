@@ -4,6 +4,7 @@ Page({
     recList: []
   },
   onLoad(e) {
+    my.showNavigationBarLoading()
     const searchtype = e.searchtype
     if (searchtype === 'words') {
       this._getSearchData(e.searchvalue) // input搜索触发的接口
@@ -36,7 +37,14 @@ Page({
           // })
           // console.log(this.data.recList)
         }
-      }
+      },
+      fail: ((err) => {
+        console.log(err)
+        this.setData({})
+      }),
+      complete: (() => {
+        my.hideNavigationBarLoading();
+      })
     });
   },
   _getSpecifyData (id) {
@@ -50,7 +58,15 @@ Page({
         if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
           console.log(res.data.data)
         }
-      }
+      },
+      fail: ((err) => {
+        console.log(err)
+        this.setData({})
+      }),
+      complete: (() => {
+        console.log(1234)
+        my.hideNavigationBarLoading();
+      })
     });
   }
 });

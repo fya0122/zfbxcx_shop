@@ -4,6 +4,7 @@ Page({
     cats: []
   },
   onLoad() {
+    my.showNavigationBarLoading()
     this._getCatsData() // 获取分类页面的数据
   },
   _getCatsData () {
@@ -28,6 +29,9 @@ Page({
         this.setData({
           cats: []
         })
+      }),
+      complete: (() => {
+        my.hideNavigationBarLoading();
       })
     });
   },

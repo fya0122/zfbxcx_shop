@@ -13,6 +13,7 @@ Page({
     this._getSwiperData()
   },
   _getSwiperData () {
+    my.showNavigationBarLoading()
     my.httpRequest({
       url: app.baseServerUrl + '/index/carousels',
       method: 'POST',
@@ -112,6 +113,7 @@ Page({
         })
       }),
       complete: (() => {
+        my.hideNavigationBarLoading();
         console.log('接口over')
       })
     });
