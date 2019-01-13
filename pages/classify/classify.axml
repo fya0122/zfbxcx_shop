@@ -5,3 +5,12 @@
     <input class="search-input" type="text" placeholder="请输入搜索商品名..." auto-focus confirm-type="search" onConfirm=""/>
   </form>
 </view>
+<!-- 分类 -->
+<view class="category">
+  <block a:for="{{cats}}" a:key="{{item.id}}">
+    <view class="cat-item">
+      <image class="cat-ico" src="../../resources/category/{{item.id}}-{{item.code}}.png"/>
+      <view class="cat-name">{{item.name}}</view>
+    </view>
+  </block>
+</view>
