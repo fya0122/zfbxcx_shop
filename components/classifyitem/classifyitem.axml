@@ -1,5 +1,5 @@
 <!-- 分类的小组件 -->
-<view class="item-outter">
+<view class="item-outter" data-id="{{id}}" onTap="goToDetail">
   <image class="new-item-cover" src="{{img}}"/>
   <view class="item-border">
     <block a:for="{{list}}">

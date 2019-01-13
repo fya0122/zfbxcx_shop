@@ -1,9 +1,10 @@
 <!-- 商品列表的结果文字显示 -->
 <view class="item-desc-bar">
   <view class="item-desc-title">{{titleName}}</view>
+  <!-- 模板 -->
   <view class="new-item-list">
     <block a:for="{{list}}" a:key="{{item.catId}}">
-      <classifyitem img="{{item.cover}}" list="{{item.tagList}}" price="{{item.priceDiscountYuan}}" likecount="{{item.likeCounts}}"/>
+      <classifyitem id="{{item.id}}" onGoToDetail="onGoToDetail" img="{{item.cover}}" list="{{item.tagList}}" price="{{item.priceDiscountYuan}}" likecount="{{item.likeCounts}}"/>
     </block>
   </view>
 </view>

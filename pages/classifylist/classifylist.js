@@ -49,6 +49,7 @@ Page({
           this.setData({
             list: res.data.data.map(item => {
               return {
+                id: item.id,
                 catId: item.catId,
                 cover: item.cover,
                 tagList: item.tagList.slice(0, 4),
@@ -86,6 +87,7 @@ Page({
           this.setData({
             list: res.data.data.map(item => {
               return {
+                id: item.id,
                 catId: item.catId,
                 cover: item.cover,
                 tagList: item.tagList.slice(0, 2),
@@ -110,5 +112,9 @@ Page({
         my.hideNavigationBarLoading();
       })
     });
+  },
+  onGoToDetail (e) {
+    const id = e.id
+    console.log(`我要跳转到${id}`)
   }
 });

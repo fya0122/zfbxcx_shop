@@ -16,10 +16,17 @@ Component({
     likecount: {
       type: String,
       value: ''
-    }
+    },
+    id: {
+      type: String
+    },
+    onGoToDetail: () => {}
   },
-  didMount() {},
-  didUpdate() {},
-  didUnmount() {},
-  methods: {},
+  methods: {
+    goToDetail(e) {
+      this.props.onGoToDetail({
+        id: e.currentTarget.dataset.id
+      })
+    }
+  }
 });
