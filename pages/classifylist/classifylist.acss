@@ -18,3 +18,10 @@ page {
   margin-left: 30rpx;
   text-align: center;
 }
+.new-item-list {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

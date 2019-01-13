@@ -1,0 +1,15 @@
+<!-- 分类的小组件 -->
+<view class="item-outter">
+  <image class="new-item-cover" src="{{img}}"/>
+  <view class="item-border">
+    <block a:for="{{list}}">
+      <view class="tags">{{item}}</view>
+    </block>
+  </view>
+  <view class="price-border">
+    <view class="price">{{price}}</view>
+    <view class="like-counts">{{likecount}}
+      <image class="like-ico" src="../../resources/icon/smallIco/likes.png"/>
+    </view>
+  </view>
+</view>

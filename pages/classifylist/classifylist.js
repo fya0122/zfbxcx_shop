@@ -2,7 +2,7 @@ const app = getApp()
 Page({
   data: {
     titleName: '',
-    recList: []
+    list: []
   },
   onLoad(e) {
     my.showNavigationBarLoading()
@@ -46,26 +46,28 @@ Page({
       method: 'POST',
       success: (res) => {
         if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
-          console.log(res.data.data)
-          // this.setData({
-          //   recList: res.data.data.map(item => {
-          //     return {
-          //       catId: item.catId,
-          //       cover: item.cover,
-          //       coverList: item.coverList,
-          //       discounts: item.discounts,
-          //       priceDiscountYuan: item.priceDiscountYuan,
-          //       priceNormalYuan: item.priceNormalYuan,
-          //       tagList: item.tagList
-          //     }
-          //   })
-          // })
-          // console.log(this.data.recList)
+          this.setData({
+            list: res.data.data.map(item => {
+              return {
+                catId: item.catId,
+                cover: item.cover,
+                tagList: item.tagList.slice(0, 4),
+                priceDiscountYuan: item.priceDiscountYuan,
+                likeCounts: item.likeCounts
+              }
+            })
+          })
+        } else {
+          this.setData({
+            list: []
+          })
         }
       },
       fail: ((err) => {
         console.log(err)
-        this.setData({})
+        this.setData({
+          list: []
+        })
       }),
       complete: (() => {
         my.hideNavigationBarLoading();
@@ -81,15 +83,30 @@ Page({
       method: 'POST',
       success: (res) => {
         if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
-          console.log(res.data.data)
+          this.setData({
+            list: res.data.data.map(item => {
+              return {
+                catId: item.catId,
+                cover: item.cover,
+                tagList: item.tagList.slice(0, 2),
+                priceDiscountYuan: item.priceDiscountYuan,
+                likeCounts: item.likeCounts
+              }
+            })
+          })
+        } else {
+          this.setData({
+            list: []
+          })
         }
       },
       fail: ((err) => {
         console.log(err)
-        this.setData({})
+        this.setData({
+          list: []
+        })
       }),
       complete: (() => {
-        console.log(1234)
         my.hideNavigationBarLoading();
       })
     });
