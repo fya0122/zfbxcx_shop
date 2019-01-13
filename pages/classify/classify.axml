@@ -7,7 +7,7 @@
 </view>
 <!-- 分类 -->
 <view class="category">
-  <block a:for="{{cats}}" a:key="{{item.id}}">
+  <block a:for="{{cats}}">
     <view class="cat-item" data-id="{{item.id}}" data-name="{{item.name}}" onTap="ontapItems">
       <image class="cat-ico" src="../../resources/category/{{item.id}}-{{item.code}}.png"/>
       <view class="cat-name">{{item.name}}</view>

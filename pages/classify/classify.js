@@ -52,7 +52,9 @@ Page({
   ontapItems (e) {
     const id = e.target.dataset.id
     const name = e.target.dataset.name
-    if (id && name) {
+    console.log(id)
+    console.log(name)
+    if (name) {
       my.navigateTo({
         url: `../classifylist/classifylist?searchtype=cat&catid=${id}&name=${name}`
       });
