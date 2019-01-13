@@ -4,7 +4,7 @@ Page({
     cats: []
   },
   onLoad() {
-    this._getCatsData()
+    this._getCatsData() // 获取分类页面的数据
   },
   _getCatsData () {
     my.httpRequest({
@@ -30,5 +30,32 @@ Page({
         })
       })
     });
+  },
+  searchItems (e) {
+    const value = e.detail.value
+    if (value === '') {
+      return
+    }
+    if (value === null) {
+      return
+    }
+    if (value === undefined) {
+      return
+    }
+    if (value) {
+      my.navigateTo({
+        url: '../classifylist/classifylist?searchtype=words&searchvalue=' + value
+      });
+    }
+  },
+  // 点击图标的时候
+  ontapItems (e) {
+    const id = e.target.dataset.id
+    const name = e.target.dataset.name
+    if (id && name) {
+      my.navigateTo({
+        url: `../classifylist/classifylist?searchtype=cat&catid=${id}&name=${name}`
+      });
+    }
   }
 });

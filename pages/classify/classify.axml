@@ -2,13 +2,13 @@
 <view class="search">
   <form class="search-form">
     <image class="search-icon" src="../../resources/icon/smallIco/search.png"/>
-    <input class="search-input" type="text" placeholder="请输入搜索商品名..." auto-focus confirm-type="search" onConfirm=""/>
+    <input class="search-input" type="text" placeholder="请输入搜索商品名..." auto-focus confirm-type="search" onConfirm="searchItems"/>
   </form>
 </view>
 <!-- 分类 -->
 <view class="category">
   <block a:for="{{cats}}" a:key="{{item.id}}">
-    <view class="cat-item">
+    <view class="cat-item" data-id="{{item.id}}" data-name="{{item.name}}" onTap="ontapItems">
       <image class="cat-ico" src="../../resources/category/{{item.id}}-{{item.code}}.png"/>
       <view class="cat-name">{{item.name}}</view>
     </view>
