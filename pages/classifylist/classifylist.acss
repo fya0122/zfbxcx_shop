@@ -1,0 +1,20 @@
+page {
+  display: flex;
+  flex-direction: column;
+  background: #f2f5f8;
+}
+/* 商品列表的结果文字显示 */
+.item-desc-bar {
+  background: white;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  padding: 10rpx 0;
+  color: #ff6699;
+}
+.item-desc-title {
+  width: 150rpx;
+  border-bottom: 4rpx solid;
+  border-bottom-color: #ff6699;
+  margin-left: 30rpx;
+  text-align: center;
+}

@@ -1,14 +1,39 @@
 const app = getApp()
 Page({
   data: {
+    titleName: '',
     recList: []
   },
   onLoad(e) {
     my.showNavigationBarLoading()
     const searchtype = e.searchtype
     if (searchtype === 'words') {
+      if (e.name) {
+        this.setData({
+          titleName: e.name
+        })
+      } else {
+        let titleName
+        if (e.searchvalue === '') {
+          titleName = '推荐商品'
+        } else {
+          titleName = e.searchvalue
+        }
+        this.setData({
+          titleName: titleName
+        })
+      }
       this._getSearchData(e.searchvalue) // input搜索触发的接口
     } else if (searchtype === 'cat') {
+      if (e.name) {
+        this.setData({
+          titleName: e.name
+        })
+      } else {
+        this.setData({
+          titleName: '系统错误, 请联系管理员!'
+        })
+      }
       this._getSpecifyData(e.catid) // 点击图标以后触发的接口
     }
   },
