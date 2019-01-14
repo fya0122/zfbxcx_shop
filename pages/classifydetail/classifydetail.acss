@@ -1,0 +1,100 @@
+page {
+  display: flex;
+  flex-direction: column;
+  background: #f2f5f8;
+}
+.scroll-item-cover {
+  width: 100%;
+  background: white;
+  white-space: nowrap;
+}
+.items-cover {
+  width: 600rpx;
+  height: 885rpx;
+  margin-left: 15rpx;
+  border-radius: 6rpx;
+}
+.items-cover:first-child {
+  margin-left: 0;
+}
+/* 商品标题 */
+.item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 32rpx;
+  line-height: 40rpx;
+  background: white;
+  padding: 14rpx;
+}
+/* price */
+.price {
+  display: flex;
+  flex-direction: row;
+  background: white;
+}
+.item-price-low {
+  color: #ff6699;
+  font-size: 48rpx;
+  line-height: 30rpx;
+  padding: 10rpx;
+}
+.item-price-high {
+  color: gray;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  padding: 18rpx 10rpx 0 10rpx;
+  /* 定义删除线 */
+  text-decoration-line: line-through;
+  margin-left: 10rpx;
+}
+.item-price-discount {
+  background: #e40046;
+  color: white;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  padding: 0 16rpx;
+  border-radius: 20rpx;
+  height: 28rpx;
+  margin: 15rpx 10rpx 0 20rpx;
+}
+/* 销量 */
+.properties {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  font-size: 24rpx;
+  justify-content: space-between;
+  padding: 14rpx 12rpx;
+  color: #b1b1b1;
+}
+/* 分割线 */
+.line-outter {
+  padding: 0;
+}
+.line {
+  background: red;
+  width: 100%;
+  height: 4rpx;
+}
+/* 商城特色 */
+.features {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  font-size: 24rpx;
+  justify-content: space-between;
+  padding: 14rpx 12rpx;
+  color: #696969
+}
+.feature-item {
+  margin-left: 20rpx;
+}
+.feature-item:first-child {
+  margin-left: 0;
+}
+.feature-ico {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 8rpx;
+}

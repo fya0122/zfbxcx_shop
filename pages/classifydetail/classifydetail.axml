@@ -1,3 +1,45 @@
-<view>
-  New Page
+<!-- 左侧封面图 -->
+<scroll-view class="scroll-item-cover" scroll-x="{{true}}">
+  <block a:for="{{currentObj.headerImages}}">
+    <image class="items-cover" src="{{item}}"/>
+  </block>
+</scroll-view>
+<!-- 商品标题title -->
+<view class="item-title">
+  {{currentObj.name}}
+</view>
+<!-- price -->
+<view class="price">
+  <view class="item-price-low">￥{{currentObj.priceDiscountYuan}}</view>
+  <view class="item-price-high">￥{{currentObj.priceNormalYuan}}</view>
+  <view class="item-price-discount">{{currentObj.discounts}}</view>
+</view>
+<!-- 销量、收藏、发货 -->
+<view class="properties">
+  <view>销量{{currentObj.sellCounts}}</view>
+  <view>收藏{{currentObj.likeCounts}}人</view>
+  <view>48小时发货</view>
+</view>
+<!-- 分割线 -->
+<view class="line-outter">
+  <view class="line"></view>
+</view>
+<!-- 商城特色、服务 -->
+<view class="features">
+  <view class="feature-item">
+    <image class="feature-ico" src="../../resources/icon/smallIco/right.png"/>
+    全国包邮
+  </view>
+  <view class="feature-item">
+    <image class="feature-ico" src="../../resources/icon/smallIco/right.png"/>
+    退货补运费
+  </view>
+  <view class="feature-item">
+    <image class="feature-ico" src="../../resources/icon/smallIco/right.png"/>
+    7天无理由
+  </view>
+  <view class="feature-item">
+    <image class="feature-ico" src="../../resources/icon/smallIco/right.png"/>
+    闪电发货
+  </view>
 </view>
