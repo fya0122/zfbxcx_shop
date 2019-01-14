@@ -115,6 +115,10 @@ Page({
   },
   onGoToDetail (e) {
     const id = e.id
-    console.log(`我要跳转到${id}`)
+    if (id) {
+      my.navigateTo({
+        url: `../classifydetail/classifydetail?id=${id}`
+      });
+    }
   }
 });

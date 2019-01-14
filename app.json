@@ -2,7 +2,8 @@
   "pages": [
     "pages/classify/classify",
     "pages/index/index",
-    "pages/classifylist/classifylist"
+    "pages/classifylist/classifylist",
+    "pages/classifydetail/classifydetail"
   ],
   "window": {
     "defaultTitle": "imooc购物",
