@@ -19,16 +19,18 @@ Page({
       method: 'POST',
       success:((res) => {
         if (res.data.msg === 'OK' && res.data.status === 200 && res.data.data) {
-          console.log('res.data.data')
-          console.log(res.data.data)
+          // console.log('swiper_ok')
+          // console.log(res.data.data)
           this.setData({
             imgUrls: res.data.data.filter((item) => {
               return item.imageUrl.length > 0
             }).map(item => {
               return {
+                catId: item.catId,
                 id: item.id,
                 imageUrl: item.imageUrl,
-                itemId: item.itemId
+                itemId: item.itemId,
+                type: item.type
               }
             })
           })
@@ -129,6 +131,21 @@ Page({
     if (id) {
       my.navigateTo({
         url: `../classifydetail/classifydetail?id=${id}`
+      });
+    }
+  },
+  // 轮播图点击跳转
+  swiperGoTo (e) {
+    const catId = e.currentTarget.dataset.catId
+    const itemId = e.currentTarget.dataset.itemId
+    const type = e.currentTarget.dataset.type
+    if (type === 1) {
+      my.navigateTo({
+        url: `../classifydetail/classifydetail?id=${itemId}`
+      });
+    } else if (type === 2) {
+      my.navigateTo({
+        url: `../classifylist/classifylist?searchtype=cat&catid=${catId}&name=搜索结果`
       });
     }
   }
