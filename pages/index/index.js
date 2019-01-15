@@ -19,13 +19,16 @@ Page({
       method: 'POST',
       success:((res) => {
         if (res.data.msg === 'OK' && res.data.status === 200 && res.data.data) {
+          console.log('res.data.data')
+          console.log(res.data.data)
           this.setData({
             imgUrls: res.data.data.filter((item) => {
               return item.imageUrl.length > 0
             }).map(item => {
               return {
                 id: item.id,
-                imageUrl: item.imageUrl
+                imageUrl: item.imageUrl,
+                itemId: item.itemId
               }
             })
           })
@@ -58,6 +61,7 @@ Page({
               return item.isRecommend === true && item.isNew === false
             }).map(item => {
               return {
+                id: item.id,
                 catId: item.catId,
                 cover: item.cover
               }
@@ -91,6 +95,7 @@ Page({
               return item.isRecommend === false && item.isNew === true
             }).map(item => {
               return {
+                id: item.id,
                 catId: item.catId,
                 cover: item.cover,
                 likeCounts: item.likeCounts,
@@ -117,5 +122,14 @@ Page({
         console.log('接口over')
       })
     });
+  },
+  // 点击商品上新的任何一个，跳转到了详情呢
+  gotodetail (e) {
+    const id = e.currentTarget.dataset.id
+    if (id) {
+      my.navigateTo({
+        url: `../classifydetail/classifydetail?id=${id}`
+      });
+    }
   }
 });

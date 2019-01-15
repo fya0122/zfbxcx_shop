@@ -37,8 +37,6 @@ Page({
                 sellCounts: item.sellCounts
             }
           })
-          console.log('succ >>> ok')
-          console.log(this.data.currentObj)
         }
       }),
       fail: ((err) => {

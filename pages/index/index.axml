@@ -30,7 +30,7 @@
 <!-- 推荐商品列表 -->
 <scroll-view class="scroll-rec-items" scroll-x="{{true}}">
   <block a:for="{{recList}}">
-    <image lazyed="{{true}}" class="items-cover" src="{{item.cover}}"/>
+    <image data-id="{{item.id}}" onTap="gotodetail" lazyed="{{true}}" class="items-cover" src="{{item.cover}}"/>
   </block>
 </scroll-view>
 <!-- 商品上新列表 -->
@@ -41,7 +41,7 @@
 </view>
 <view class="new-item-list">
   <block a:for="{{newList}}">
-    <view class="item-outter">
+    <view class="item-outter" data-id="{{item.id}}" onTap="gotodetail">
       <image class="new-item-cover" src="{{item.cover}}"/>
       <view class="item-border">
         <view a:for="{{item.tagList}}" class="tags">{{item}}</view>
