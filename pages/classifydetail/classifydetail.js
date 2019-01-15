@@ -23,6 +23,7 @@ Page({
           this.setData({
             currentObj: {
                 catId: item.catId,
+                content: item.content ? JSON.parse(item.content) : item.content,
                 cover: item.cover,
                 coverList: item.coverList,
                 discounts: item.discounts,
@@ -36,6 +37,8 @@ Page({
                 sellCounts: item.sellCounts
             }
           })
+          console.log('succ >>> ok')
+          console.log(this.data.currentObj)
         }
       }),
       fail: ((err) => {

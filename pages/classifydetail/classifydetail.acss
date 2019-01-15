@@ -98,3 +98,64 @@ page {
   height: 20rpx;
   margin-right: 8rpx;
 }
+/* 商品详情标题 */
+.item-desc-bar {
+  margin-top: 10rpx;
+  background: white;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  padding: 10rpx 0;
+  color: #ff6699;
+}
+.item-desc-title {
+  width: 150rpx;
+  border-bottom: 4rpx solid;
+  border-bottom-color: #ff6699;
+  margin-left: 12rpx;
+  text-align: center;
+}
+/* 商品详情内容 */
+.item-desc-content {
+  background: #f6f6f6;
+  padding-top: 30rpx;
+  margin-bottom: 100rpx;
+}
+/* 底部 */
+.bottom-operator {
+  background: white;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+}
+.like-img {
+  width: 15%;
+  text-align: center;
+  padding-top: 14rpx;
+}
+.like-ico {
+  width: 44rpx;
+  height: 44rpx;
+}
+.like-words {
+  color: #676767;
+  font-size: 24rpx;
+}
+.add-to-cart {
+  color: #3a3932;
+  background: #ffe817;
+  width: 35%;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}
+.buy-my {
+  color: white;
+  background: #ff6699;
+  width: 35%;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}

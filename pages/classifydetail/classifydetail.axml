@@ -43,3 +43,31 @@
     闪电发货
   </view>
 </view>
+<!-- 商品详情标题 -->
+<view class="item-desc-bar">
+  <view class="item-desc-title">商品详情</view>
+</view>
+<!-- 商品详情的具体内容展示 -->
+<view class="item-desc-content">
+  <block a:for="{{currentObj.content}}">
+    <block a:if="{{item.contentType === '1'}}">
+      <view style="{{item.cssStyle}}">{{item.words}}</view>
+    </block>
+    <block a:if="{{item.contentType === '2'}}">
+      <image style="{{item.cssStyle}}" src="{{item.url}}"/>
+    </block>
+  </block>
+</view>
+<!-- 底部 -->
+<view class="bottom-operator">
+  <view class="like-img" onTap="">
+    <image class="like-ico" src="../../resources/icon/smallIco/cart-empty.png"/>
+    <view class="like-words">购物车</view>
+  </view>
+  <view class="like-img" onTap="">
+    <image class="like-ico" src="../../resources/icon/smallIco/unlike.png"/>
+    <view class="like-words">收藏</view>
+  </view>
+  <view class="add-to-cart">放入购物车</view>
+  <view class="buy-my">购买</view>
+</view>
