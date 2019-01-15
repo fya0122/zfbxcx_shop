@@ -151,6 +151,20 @@ page {
   font-size: 32rpx;
   line-height: 100rpx;
 }
+.animation-img {
+  /* 绝对定位，漂浮起来 */
+  position: absolute;
+  margin-top: 20rpx;
+  margin-left: 110rpx;
+  height: 35rpx;
+  width: 35rpx;
+  border: 4rpx solid;
+  border-color: #ff679a;
+  border-radius: 30rpx;
+  /* 背景图填满 */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 .buy-my {
   color: white;
   background: #ff6699;

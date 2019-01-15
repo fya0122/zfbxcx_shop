@@ -68,6 +68,10 @@
     <image class="like-ico" src="../../resources/icon/smallIco/unlike.png"/>
     <view class="like-words">收藏</view>
   </view>
-  <view class="add-to-cart">放入购物车</view>
+  <view class="add-to-cart" onTap="addToCart">
+    <!-- 定义动画组件，创建实例 -->
+    <view style="opacity: {{animationOpacity}};background-image: url({{currentObj.headerImages[0]}})" class="animation-img" animation="{{animationInfo}}"></view>
+    放入购物车
+  </view>
   <view class="buy-my">购买</view>
 </view>
