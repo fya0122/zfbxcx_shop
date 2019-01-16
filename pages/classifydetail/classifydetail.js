@@ -161,5 +161,11 @@ Page({
       }
     }
     return false
+  },
+  // 跳转至购物车
+  gotocart () {
+    my.switchTab({
+      url: '../cart/cart'
+    })
   }
 });

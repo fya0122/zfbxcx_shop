@@ -60,7 +60,7 @@
 </view>
 <!-- 底部 -->
 <view class="bottom-operator">
-  <view class="like-img" onTap="">
+  <view class="like-img" onTap="gotocart">
     <image class="like-ico" src="../../resources/icon/smallIco/{{cartIco}}.png"/>
     <view class="like-words">购物车</view>
   </view>

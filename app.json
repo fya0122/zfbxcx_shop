@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/cart/cart",
     "pages/index/index",
     "pages/classify/classify",
     "pages/classifylist/classifylist",
@@ -25,6 +26,12 @@
         "name": "分类",
         "icon": "resources/icon/tabBar/category.png",
         "activeIcon": "resources/icon/tabBar/category-sel.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "name": "购物车",
+        "icon": "resources/icon/tabBar/shopping-car.png",
+        "activeIcon": "resources/icon/tabBar/shopping-car-sel.png"
       }
     ]
   }
