@@ -3,7 +3,8 @@ Page({
   data: {
     currentObj: {},
     animationInfo: {}, // 动画对象，默认为{}，但在onShow已经进行了实例化
-    animationOpacity: 0 // 透明度
+    animationOpacity: 0, // 透明度
+    cartIco: 'cart-empty'
   },
   onLoad(e) {
     const id = e.id
@@ -60,16 +61,20 @@ Page({
     });
   },
   // 加入购物车
-  addToCart () {
+  addToCart (e) {
     this.setData({
       animationOpacity: 1
     })
-    this.showAddToCartAnimation()
+    this.showAddToCartAnimation() // 动画
+
+    // 商品id存入缓存购物车
+    const id = e.target.dataset.id
+    this.cartItemIncrease(id)
   },
   // 实现动画效果
   showAddToCartAnimation () {
     let animation = my.createAnimation({
-      duration: 1200
+      duration: 600
     })
     this.animation = animation
     // 动作（旋转的同时+又在水平上面偏移）
@@ -77,5 +82,35 @@ Page({
     this.setData({
       animationInfo: animation.export()
     })
+    // 点击完了以后，万一还想再点击的话，我们依旧可以有动画的(复原动画)
+    setTimeout(() => {
+      this.setData({
+        animationOpacity: 0,
+        cartIco: 'cart-full'
+      })
+      setTimeout(() => {
+        this.animation.rotate(0).translateX(0).step({
+          duration: 0
+        });
+        this.setData({
+          animationInfo: this.animation.export()
+        })
+      }, 550)
+    }, 600)
+  },
+  // 放入购物车
+  cartItemIncrease (id) {
+    let cartItemIdArray = my.getStorageSync({ key: 'cart_item_id_array' }).data
+    if (cartItemIdArray === null || cartItemIdArray === undefined) {
+      // 构建空的购物车数组对象
+      cartItemIdArray = []
+    }
+    // 构建新的商品对象
+    const cartItem = app.cartItem(id, 1)
+    cartItemIdArray.push(cartItem)
+    my.setStorageSync({
+      key: 'cart_item_id_array',
+      data: cartItemIdArray
+    });
   }
 });

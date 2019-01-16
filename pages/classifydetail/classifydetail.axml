@@ -61,14 +61,14 @@
 <!-- 底部 -->
 <view class="bottom-operator">
   <view class="like-img" onTap="">
-    <image class="like-ico" src="../../resources/icon/smallIco/cart-empty.png"/>
+    <image class="like-ico" src="../../resources/icon/smallIco/{{cartIco}}.png"/>
     <view class="like-words">购物车</view>
   </view>
   <view class="like-img" onTap="">
     <image class="like-ico" src="../../resources/icon/smallIco/unlike.png"/>
     <view class="like-words">收藏</view>
   </view>
-  <view class="add-to-cart" onTap="addToCart">
+  <view class="add-to-cart" data-id="{{currentObj.id}}" onTap="addToCart">
     <!-- 定义动画组件，创建实例 -->
     <view style="opacity: {{animationOpacity}};background-image: url({{currentObj.headerImages[0]}})" class="animation-img" animation="{{animationInfo}}"></view>
     放入购物车
