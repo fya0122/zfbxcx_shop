@@ -100,17 +100,66 @@ Page({
   },
   // 放入购物车
   cartItemIncrease (id) {
-    let cartItemIdArray = my.getStorageSync({ key: 'cart_item_id_array' }).data
-    if (cartItemIdArray === null || cartItemIdArray === undefined) {
-      // 构建空的购物车数组对象
-      cartItemIdArray = []
+    const shoppingCart = my.getStorageSync({ key: 'cart_item_id_array' }).data
+    if (shoppingCart !== null && shoppingCart !== undefined) {
+      const result = this.checkMyArr(shoppingCart, id)
+      if (result === true) {
+        for (const item of shoppingCart) {
+          if (item.id === id) {
+            item.counts = item.counts + 1
+          }
+        }
+        my.setStorageSync({
+          key: 'cart_item_id_array',
+          data: shoppingCart
+        })
+      } else if (result === false) {
+        shoppingCart.push(app.cartItem(id, 1))
+        my.setStorageSync({
+          key: 'cart_item_id_array',
+          data: shoppingCart
+        })
+      }
+    } else {
+      const myArr = []
+      myArr.push(app.cartItem(id, 1))
+      my.setStorageSync({
+        key: 'cart_item_id_array',
+        data: myArr
+      })
     }
-    // 构建新的商品对象
-    const cartItem = app.cartItem(id, 1)
-    cartItemIdArray.push(cartItem)
-    my.setStorageSync({
-      key: 'cart_item_id_array',
-      data: cartItemIdArray
-    });
+    // if (shoppingCart.data.length) {
+    //   for (const item of shoppingCart.data) {
+    //     if (item.id === id) {
+    //       item.counts = item.counts + 1
+    //       my.setStorageSync({
+    //         key: 'cart_item_id_array',
+    //         data: shoppingCart
+    //       })
+    //     }
+    //   }
+    //   shoppingCart.data.push(app.cartItem(id, 1))
+    //   my.setStorageSync({
+    //     key: 'cart_item_id_array',
+    //     data: shoppingCart
+    //   })
+    // } else {
+    //   const myArray = []
+    //   const yourCart = app.cartItem(id, 1)
+    //   myArray.push(yourCart)
+    //   my.setStorageSync({
+    //     key: 'cart_item_id_array',
+    //     data: myArray
+    //   })
+    // }
+  },
+  // 判断是否存在这个数组呢
+  checkMyArr (arr, id) {
+    for (const item of arr) {
+      if (item.id === id) {
+        return true
+      }
+    }
+    return false
   }
 });
