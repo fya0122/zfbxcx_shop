@@ -3,6 +3,6 @@ const g = typeof global !== 'undefined' ? global : self;
 g.appXRuntimeConfig = {};
 g.appXAppJson = {
   "app": {
-    "$homepage": "pages/cart/cart"
+    "$homepage": "pages/index/index"
   }
 };
