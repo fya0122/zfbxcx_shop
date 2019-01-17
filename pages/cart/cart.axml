@@ -1,7 +1,10 @@
-<view class="empty" a:if="{{emptyHidden}}">
+<view class="empty" a:if="{{isHasValue === false}}">
   <image class="goshopping-img" src="../../resources/img/goshopping.png"/>
   <view class="empty-words">购物车为空</view>
   <view class="help-yourself-outter">
     <view class="help-yourself-words" onTap="helpYourSelf">随便逛一下</view>
   </view>
+</view>
+<view class="full" a:if="{{isHasValue === true}}">
+  购物车不为空的情况显示
 </view>
