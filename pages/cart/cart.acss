@@ -3,6 +3,7 @@ page {
   flex-direction: column;
   background: #f2f5f8;
 }
+/* 展示层，无值的情况下 */
 .empty {
   margin-top: 360rpx;
   text-align: center;
@@ -31,3 +32,95 @@ page {
   line-height: 50rpx;
   border-radius: 24rpx;
 }
+/* 展示层，有值的情况下 */
+.full {
+  margin-bottom: 100rpx;
+}
+.cart-line {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  padding: 10rpx 25rpx 10rpx 25rpx;
+  margin-top: 10rpx;
+}
+.cart-line:first-child {
+  margin-top: 0;
+}
+.item-radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cart-item-img {
+  width: 220rpx;
+  height: 290rpx;
+  margin-left: 10rpx;
+}
+.item-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item-title {
+  margin-left: 20rpx;
+  font-size: 26rpx;
+}
+.price-tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.item-price {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+/* 底部结算栏 */
+.bottom-settlement {
+  background: white;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+}
+.sel-all-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+}
+.select-ico {
+  width: 36rpx;
+  height: 36rpx;
+}
+.sel-all-words {
+  margin-left: 5rpx;
+  font-size: 36rpx;
+}
+.total-cal {
+  width: 45%;
+  text-align: right;
+  margin-right: 20rpx;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.total-amount {
+  color: #ff6699;
+  margin-top: 25rpx;
+}
+.total-desc {
+  color: gray;
+  margin-top: 10rpx;
+}
+.settlement-me {
+  color: white;
+  background: #ff6699;
+  width: 35%;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 100rpx;
+} 

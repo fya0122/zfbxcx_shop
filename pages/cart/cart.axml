@@ -6,5 +6,39 @@
   </view>
 </view>
 <view class="full" a:if="{{isHasValue === true}}">
-  购物车不为空的情况显示
+  <block a:for="{{cartList}}">
+    <view class="cart-line">
+      <view class="item-radio">
+        <image class="select-ico" onTap="" src="../../resources/icon/smallIco/select.png"/>
+      </view>
+      <view>
+        <image class="cart-item-img" src="{{item.cover}}"/>
+      </view>
+      <view class="item-block">
+        <view class="item-title">{{item.name}}</view>
+        <view class="price-tag">
+          <view class="item-price">￥{{item.priceDiscountYuan}}</view>
+          <view>× {{item.counts}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 底部结算操作栏 -->
+<view class="bottom-settlement" a:if="{{isHasValue === true}}">
+  <view class="sel-all-block" onTap="">
+    <image class="select-ico" src="../../resources/icon/smallIco/unselect.png"/>
+    <view class="sel-all-words">全选</view>
+  </view>
+  <view class="total-cal">
+    <view class="total-amount">
+      合计：880.00
+    </view>
+    <view class="total-desc">
+      不含运费、折扣优惠
+    </view>
+  </view>
+  <view class="settlement-me" onTap="">
+    去结算(6)
+  </view>
 </view>

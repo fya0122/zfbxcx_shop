@@ -54,6 +54,7 @@ Page({
                   }
                 })
               })
+              console.log(res.data.data)
             } else {
               this.setData({
                 isHasValue: false,
