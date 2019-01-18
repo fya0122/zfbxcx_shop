@@ -31,7 +31,7 @@
 </view>
 <!-- 底部结算操作栏 -->
 <view class="bottom-settlement" a:if="{{isHasValue === true}}">
-  <view class="sel-all-block" onTap="">
+  <view class="sel-all-block" onTap="changecheckall">
     <block a:if="{{checkAll === true}}">
       <image class="select-ico" src="../../resources/icon/smallIco/select.png"/>
     </block>

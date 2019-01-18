@@ -122,5 +122,37 @@ Page({
         checkAll: false
       })
     }
+  },
+  // 改变全选
+  changecheckall () {
+    let yescount = 0
+    let nocount = 0
+    for (const item of this.data.cartList) {
+      if (item.isSelect === 'yes') {
+        yescount += 1
+      } else if (item.isSelect === 'no') {
+        nocount += 1
+      }
+    }
+    if (yescount === this.data.cartList.length) {
+      const cartList = this.data.cartList
+      for (const item of cartList) {
+        item.isSelect = 'no'
+      }
+      this.setData({
+        checkAll: false,
+        cartList: cartList
+      })
+    } else {
+      const cartList = this.data.cartList
+      for (const item of cartList) {
+        item.isSelect = 'yes'
+      }
+      this.setData({
+        checkAll: true,
+        cartList: cartList
+      })
+    }
+    my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
   }
 });
