@@ -33,6 +33,7 @@ Page({
                 for (const item_local of cart) {
                   if (item_http.id === item_local.id) {
                     item_http.counts = item_local.counts
+                    item_http.isSelect = item_local.isSelect
                   }
                 }
               }
@@ -40,6 +41,7 @@ Page({
                 isHasValue: true,
                 cartList: res.data.data.map(item => {
                   return {
+                    isSelect: item.isSelect || false,
                     catId: item.catId,
                     cover: item.cover,
                     discounts: item.discounts,
@@ -54,7 +56,6 @@ Page({
                   }
                 })
               })
-              console.log(res.data.data)
             } else {
               this.setData({
                 isHasValue: false,
@@ -80,5 +81,19 @@ Page({
         cartList: []
       })
     }
+  },
+  // 改变单选
+  updateCheckbox (e) {
+    const id = e.currentTarget.dataset.id
+    const isSelect = e.currentTarget.dataset.isSelect
+    const cartList = this.data.cartList
+    const item = cartList.find(e => e.id === id)
+    if (item.isSelect === isSelect) {
+      item.isSelect = !item.isSelect
+    }
+    this.setData({
+      cartList: cartList
+    })
+    my.setStorageSync({ key: 'cart_item_id_array', data: cartList })
   }
 });

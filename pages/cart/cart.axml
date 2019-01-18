@@ -9,7 +9,12 @@
   <block a:for="{{cartList}}">
     <view class="cart-line">
       <view class="item-radio">
-        <image class="select-ico" onTap="" src="../../resources/icon/smallIco/select.png"/>
+        <block a:if="{{item.isSelect === true}}">
+          <image class="select-ico" data-is-select="{{item.isSelect}}" data-id="{{item.id}}" onTap="updateCheckbox" src="../../resources/icon/smallIco/select.png"/>
+        </block>
+        <block a:if="{{item.isSelect === false}}">
+          <image class="select-ico" data-is-select="{{item.isSelect}}" data-id="{{item.id}}" onTap="updateCheckbox" src="../../resources/icon/smallIco/unselect.png"/>
+        </block>
       </view>
       <view>
         <image class="cart-item-img" src="{{item.cover}}"/>
