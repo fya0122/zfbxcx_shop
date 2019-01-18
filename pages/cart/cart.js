@@ -2,7 +2,8 @@ const app = getApp()
 Page({
   data: {
     cartList: [],
-    isHasValue: false // 默认没有值的
+    isHasValue: false, // 默认没有值的
+    checkAll: true // 全选
   },
   onShow() {
     this._getShoppingCartData()
@@ -33,7 +34,7 @@ Page({
                 for (const item_local of cart) {
                   if (item_http.id === item_local.id) {
                     item_http.counts = item_local.counts
-                    item_http.isSelect = item_local.isSelect
+                    item_http.isSelect = item_local.isSelect || 'yes'
                   }
                 }
               }
@@ -41,7 +42,7 @@ Page({
                 isHasValue: true,
                 cartList: res.data.data.map(item => {
                   return {
-                    isSelect: item.isSelect || false,
+                    isSelect: item.isSelect,
                     catId: item.catId,
                     cover: item.cover,
                     discounts: item.discounts,
@@ -56,6 +57,8 @@ Page({
                   }
                 })
               })
+              // 全选的检测
+              this._checkAll(this.data.cartList)
             } else {
               this.setData({
                 isHasValue: false,
@@ -89,11 +92,35 @@ Page({
     const cartList = this.data.cartList
     const item = cartList.find(e => e.id === id)
     if (item.isSelect === isSelect) {
-      item.isSelect = !item.isSelect
+      if (item.isSelect === 'yes') {
+        item.isSelect = 'no'
+      } else {
+        item.isSelect = 'yes'
+      }
     }
     this.setData({
       cartList: cartList
     })
-    my.setStorageSync({ key: 'cart_item_id_array', data: cartList })
+    my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
+    this._checkAll(this.data.cartList)
+  },
+  // 全选的检测
+  _checkAll (cartList) {
+    const length = cartList.length
+    let isSelectTotal = 0
+    for (const item of cartList) {
+      if (item.isSelect === 'yes') {
+        isSelectTotal += 1
+      }
+    }
+    if (isSelectTotal === length) {
+      this.setData({
+        checkAll: true
+      })
+    } else {
+      this.setData({
+        checkAll: false
+      })
+    }
   }
 });

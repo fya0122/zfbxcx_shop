@@ -9,10 +9,10 @@
   <block a:for="{{cartList}}">
     <view class="cart-line">
       <view class="item-radio">
-        <block a:if="{{item.isSelect === true}}">
+        <block a:if="{{item.isSelect === 'yes'}}">
           <image class="select-ico" data-is-select="{{item.isSelect}}" data-id="{{item.id}}" onTap="updateCheckbox" src="../../resources/icon/smallIco/select.png"/>
         </block>
-        <block a:if="{{item.isSelect === false}}">
+        <block a:if="{{item.isSelect === 'no'}}">
           <image class="select-ico" data-is-select="{{item.isSelect}}" data-id="{{item.id}}" onTap="updateCheckbox" src="../../resources/icon/smallIco/unselect.png"/>
         </block>
       </view>
@@ -32,8 +32,13 @@
 <!-- 底部结算操作栏 -->
 <view class="bottom-settlement" a:if="{{isHasValue === true}}">
   <view class="sel-all-block" onTap="">
-    <image class="select-ico" src="../../resources/icon/smallIco/unselect.png"/>
-    <view class="sel-all-words">全选</view>
+    <block a:if="{{checkAll === true}}">
+      <image class="select-ico" src="../../resources/icon/smallIco/select.png"/>
+    </block>
+    <block a:if="{{checkAll === false}}">
+      <image class="select-ico" src="../../resources/icon/smallIco/unselect.png"/>
+    </block>
+    <view class="sel-all-words">全选/反选</view>
   </view>
   <view class="total-cal">
     <view class="total-amount">
