@@ -42,13 +42,13 @@
   </view>
   <view class="total-cal">
     <view class="total-amount">
-      合计：880.00
+      合计：{{totalPrice}}
     </view>
     <view class="total-desc">
       不含运费、折扣优惠
     </view>
   </view>
   <view class="settlement-me" onTap="">
-    去结算(6)
+    去结算({{totalCount}})
   </view>
 </view>

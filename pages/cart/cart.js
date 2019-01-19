@@ -3,7 +3,9 @@ Page({
   data: {
     cartList: [],
     isHasValue: false, // 默认没有值的
-    checkAll: true // 全选
+    checkAll: true, // 全选
+    totalPrice: 0,
+    totalCount: 0
   },
   onShow() {
     this._getShoppingCartData()
@@ -59,6 +61,8 @@ Page({
               })
               // 全选的检测
               this._checkAll(this.data.cartList)
+              // 计算金额和总的数量
+              this._calculatePriceAndCount(this.data.cartList)
             } else {
               this.setData({
                 isHasValue: false,
@@ -103,6 +107,7 @@ Page({
     })
     my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
     this._checkAll(this.data.cartList)
+    this._calculatePriceAndCount(this.data.cartList)
   },
   // 全选的检测
   _checkAll (cartList) {
@@ -122,6 +127,20 @@ Page({
         checkAll: false
       })
     }
+  },
+  // 计算金额和数量
+  _calculatePriceAndCount (cartList) {
+    const total = cartList.filter(item => item.isSelect === 'yes')
+    let totalPrice = 0
+    let totalCount = 0
+    for (const item of total) {
+      totalPrice += item.counts * parseInt(item.priceDiscountYuan)
+      totalCount += item.counts
+    }
+    this.setData({
+      totalPrice: totalPrice,
+      totalCount: totalCount
+    })
   },
   // 改变全选
   changecheckall () {
@@ -154,5 +173,6 @@ Page({
       })
     }
     my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
+    this._calculatePriceAndCount(this.data.cartList)
   }
 });
