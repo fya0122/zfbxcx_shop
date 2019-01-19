@@ -1,3 +1,44 @@
-<view>
-  New Page
+<view class="orders splitter">
+  <block a:for="{{confirmOrder}}">
+    <view class="item">
+      <image src="{{item.cover}}" class="items-cover"/>
+      <view class="item-title">{{item.name}}</view>
+      <view class="price-info">
+        <view class="item-old-line">
+          <view class="item-old-price">￥{{item.priceNormalYuan}}</view>
+        </view>
+        <view class="item-price">￥{{item.priceDiscountYuan}}</view>
+        <view class="item-counts">
+          <view>{{item.counts}}</view>
+          <view>件</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 配送方式 快递运费 合计 等信息 -->
+<view class="order-info">
+  <view class="info-line splitter">
+    <view class="lable-words">运送方式:</view>
+    <view>全国包邮</view>
+  </view>
+  <view class="info-line splitter">
+    <view class="lable-words">快递费用:</view>
+    <view>￥0.00</view>
+  </view>
+  <view class="info-line splitter">
+    <view class="lable-words">合计:</view>
+    <view style="color: #ffbfc7">￥{{totalPrice}}</view>
+  </view>
+  <view class="remark-info">
+    <input type="text" placeholder="订单备注" onInput="" placeholder-class="remark-holder" class="remark"/>
+  </view>
+</view>
+<!-- 底部提交订单 -->
+<view class="bottom-operator">
+  <view class="total-info">
+    <view class="total-words">总计:</view>
+    <view class="total-amount">￥{{totalPrice}}</view>
+  </view>
+  <view class="submit-order" onTap="">提交订单</view>
 </view>
