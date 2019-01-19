@@ -48,7 +48,7 @@
       不含运费、折扣优惠
     </view>
   </view>
-  <view class="settlement-me" onTap="">
+  <view class="settlement-me" onTap="goToConfirm">
     去结算({{totalCount}})
   </view>
 </view>

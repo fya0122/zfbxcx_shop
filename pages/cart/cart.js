@@ -174,5 +174,27 @@ Page({
     }
     my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
     this._calculatePriceAndCount(this.data.cartList)
+  },
+  // 去确认的页面
+  goToConfirm () {
+    my.showNavigationBarLoading();
+    const pcart = this.data.cartList.filter(item => item.isSelect === 'yes')
+    let totalPrice = 0
+    for (const item of pcart) {
+      totalPrice += item.counts * parseInt(item.priceDiscountYuan)
+    }
+    if (totalPrice > 0) {
+      my.setStorageSync({ key: 'pcart_item_id_array', data: pcart });
+      my.hideNavigationBarLoading();
+      my.navigateTo({
+        url: '../confirmorder/confirmorder'
+      });
+    } else {
+      my.alert({
+        title: '温馨提示',
+        content: '至少购买一件商品才能结算哟',
+        buttonText: '好的' 
+      })
+    }
   }
 });

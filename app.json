@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/classify/classify",
     "pages/classifylist/classifylist",
-    "pages/classifydetail/classifydetail"
+    "pages/classifydetail/classifydetail",
+    "pages/confirmorder/confirmorder"
   ],
   "window": {
     "defaultTitle": "imooc购物",
