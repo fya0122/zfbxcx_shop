@@ -87,15 +87,16 @@ Page({
       this.setData({
         animationOpacity: 0,
         cartIco: 'cart-full'
+      }, () => {
+        setTimeout(() => {
+          this.animation.rotate(0).translateX(0).step({
+            duration: 0
+          });
+          this.setData({
+            animationInfo: this.animation.export()
+          })
+        }, 550)
       })
-      setTimeout(() => {
-        this.animation.rotate(0).translateX(0).step({
-          duration: 0
-        });
-        this.setData({
-          animationInfo: this.animation.export()
-        })
-      }, 550)
     }, 600)
   },
   // 放入购物车
@@ -132,5 +133,27 @@ Page({
     my.switchTab({
       url: '../cart/cart'
     })
+  },
+  // 购买
+  goToBuy () {
+    const currentObj = this.data.currentObj
+    let buyObj = {
+      catId: currentObj.catId,
+      content: currentObj.content,
+      cover: currentObj.cover,
+      discounts: currentObj.discounts,
+      id: currentObj.id,
+      likeCounts: currentObj.likeCounts,
+      name: currentObj.name,
+      priceDiscountYuan: currentObj.priceDiscountYuan,
+      priceNormalYuan: currentObj.priceNormalYuan,
+      sellCounts: currentObj.sellCounts,
+      tagList: currentObj.tagList,
+      counts: 1
+    }
+    let pcart_item_id_array = []
+    pcart_item_id_array.push(buyObj)
+    my.setStorageSync({ key: 'pcart_item_id_array', data: pcart_item_id_array })
+    my.navigateTo({ url: '../confirmorder/confirmorder' })
   }
 });
