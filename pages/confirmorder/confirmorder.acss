@@ -7,7 +7,6 @@ page {
 }
 /* 收货地址为空 start */
 .empty-address {
-  margin-top: 10rpx;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -16,6 +15,7 @@ page {
   padding-top: 30rpx;
   padding-left: 20rpx;
   padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #ffbfc7;
 }
 .location-ico {
   width: 40rpx;
@@ -24,7 +24,7 @@ page {
 }
 .write-address {
   color: gray;
-  font-size: 13px;
+  font-size: 26rpx;
   /* flex 子项的放大比例，撑满后，箭头就靠右了 */
   flex-grow: 1;
   margin-left: 10rpx;
@@ -37,22 +37,23 @@ page {
 /* end */
 /* 收货地址存在时 start */
 .full-address {
-  margin-top: 10rpx;
+  /* margin-top: 10rpx; */
   background-color: white;
   padding-top: 30rpx;
   padding-left: 20rpx;
   padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #ffbfc7;
 }
 .contact-info {
   display: flex;
   flex-direction: row;
-  font-size: 14px;
+  font-size: 28rpx;
   margin-left: 60rpx;
 }
 .address-info {
   display: flex;
   flex-direction: row;
-  font-size: 13px;
+  font-size: 26rpx;
   color: gray;
   margin-top: 16rpx;
   line-height: 40rpx;

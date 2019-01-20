@@ -1,3 +1,26 @@
+<!-- 收货地址为空的情况下 -->
+<view class="empty-address" a:if="{{isExistAddress === false}}">
+  <image class="location-ico" src="../../resources/icon/smallIco/location.png"/>
+  <view class="write-address">请填写收货地址</view>
+  <image class="arrow-left-ico" src="../../resources/icon/smallIco/arrow-left.png"/>
+</view>
+<!-- 收货地址不为空的情况下 -->
+<view class="full-address" a:if="{{isExistAddress === true}}">
+  <view class="contact-info">
+    <view>收货人：</view>
+    <view>范延安</view>
+    <view>18730930122</view>
+  </view>
+  <view class="address-info">
+    <image class="location-ico" src="../../resources/icon/smallIco/location.png"/>
+    <view class="address-province">河北</view>
+    <view class="address-city">石家庄</view>
+    <view class="address-district">桥西区</view>
+    <view class="address-desc">西三教</view>
+    <image class="arrow-left-ico" src="../../resources/icon/smallIco/arrow-left.png"/>
+  </view>
+</view>
+<!-- 信息 -->
 <view class="orders splitter">
   <block a:for="{{confirmOrder}}">
     <view class="item">
