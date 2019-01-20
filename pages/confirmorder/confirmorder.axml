@@ -28,10 +28,10 @@
   </view>
   <view class="info-line splitter">
     <view class="lable-words">合计:</view>
-    <view style="color: #ffbfc7">￥{{totalPrice}}</view>
+    <view style="color: red">￥{{totalPrice}}</view>
   </view>
   <view class="remark-info">
-    <input type="text" placeholder="订单备注" onInput="" placeholder-class="remark-holder" class="remark"/>
+    <input type="text" placeholder="订单备注" onInput="changeInputHandle" placeholder-class="remark-holder" class="remark"/>
   </view>
 </view>
 <!-- 底部提交订单 -->
@@ -40,5 +40,5 @@
     <view class="total-words">总计:</view>
     <view class="total-amount">￥{{totalPrice}}</view>
   </view>
-  <view class="submit-order" onTap="">提交订单</view>
+  <view class="submit-order" onTap="submitorder">提交订单</view>
 </view>
