@@ -4,7 +4,7 @@ Page({
     confirmOrder: [],
     totalPrice: 0,
     orderRemark: '用户并未留下备注信息',
-    isExistAddress: true
+    isExistAddress: false
   },
   onLoad() {
     this._getConfirmOrderData()
