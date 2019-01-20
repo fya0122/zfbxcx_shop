@@ -92,5 +92,10 @@ Page({
         my.hideNavigationBarLoading();
       })
     });
+  },
+  // 跳转到地址页呢
+  gotoaddresslist () {
+    // my.navigateTo({ url: '../../addresslist/addresslist' });
+    my.switchTab({ url: '../addresslist/addresslist' });
   }
 });

@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/cart/cart",
+    "pages/addresslist/addresslist",
     "pages/index/index",
+    "pages/cart/cart",
     "pages/classify/classify",
     "pages/classifylist/classifylist",
     "pages/classifydetail/classifydetail",
     "pages/confirmorder/confirmorder",
-    "pages/addresslist/addresslist",
     "pages/addressinfo/addressinfo"
   ],
   "window": {
@@ -33,6 +33,18 @@
       {
         "pagePath": "pages/cart/cart",
         "name": "购物车",
+        "icon": "resources/icon/tabBar/shopping-car.png",
+        "activeIcon": "resources/icon/tabBar/shopping-car-sel.png"
+      },
+      {
+        "pagePath": "pages/addresslist/addresslist",
+        "name": "list",
+        "icon": "resources/icon/tabBar/shopping-car.png",
+        "activeIcon": "resources/icon/tabBar/shopping-car-sel.png"
+      },
+      {
+        "pagePath": "pages/addressinfo/addressinfo",
+        "name": "info",
         "icon": "resources/icon/tabBar/shopping-car.png",
         "activeIcon": "resources/icon/tabBar/shopping-car-sel.png"
       }

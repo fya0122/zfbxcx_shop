@@ -1,11 +1,11 @@
 <!-- 收货地址为空的情况下 -->
-<view class="empty-address" a:if="{{isExistAddress === false}}">
+<view class="empty-address" onTap="gotoaddresslist" a:if="{{isExistAddress === false}}">
   <image class="location-ico" src="../../resources/icon/smallIco/location.png"/>
   <view class="write-address">请填写收货地址</view>
   <image class="arrow-left-ico" src="../../resources/icon/smallIco/arrow-left.png"/>
 </view>
 <!-- 收货地址不为空的情况下 -->
-<view class="full-address" a:if="{{isExistAddress === true}}">
+<view class="full-address" onTap="gotoaddresslist" a:if="{{isExistAddress === true}}">
   <view class="contact-info">
     <view>收货人：</view>
     <view>范延安</view>
