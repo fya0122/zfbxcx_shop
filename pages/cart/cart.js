@@ -17,13 +17,16 @@ Page({
   },
   _getShoppingCartData () {
     const cart = my.getStorageSync({ key: 'cart_item_id_array' }).data
-    if (cart) {
+    console.log(cart)
+    if (cart && cart.length > 0) {
       my.showNavigationBarLoading()
       if (Array.isArray(cart) === true) {
         let itemIds = ''
         for (const item of cart) {
           itemIds += item.id + ','
         }
+        console.log('itemIds')
+        console.log(itemIds)
         my.httpRequest({
           url: app.baseServerUrl + '/item/queryItems',
           data: {

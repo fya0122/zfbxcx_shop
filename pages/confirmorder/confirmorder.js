@@ -11,6 +11,8 @@ Page({
   // 得到订单
   _getConfirmOrderData () {
     let confirmOrder = my.getStorageSync({ key: 'pcart_item_id_array' }).data;
+    console.log('this is confirmOrder')
+    console.log(confirmOrder)
     let totalPrice = 0
     for (const item of confirmOrder) {
       totalPrice += item.counts * parseInt(item.priceDiscountYuan)
@@ -41,23 +43,42 @@ Page({
   },
   // 提交订单
   submitorder () {
+    my.showNavigationBarLoading();
     const confirmOrder = this.data.confirmOrder
     let itemStr = ''
     for (const item of confirmOrder) {
       itemStr += `${item.id}|${item.counts},`
     }
+    console.log('this is itemStr')
+    console.log(itemStr)
     my.httpRequest({
       url: app.baseServerUrl + '/order/createOrder',
       method: 'POST',
       data: {
         itemStr: itemStr,
         buyerId: '666',
-        remark: '',
+        remark: this.data.orderRemark || '',
         addressId: ''
       },
       success: ((res) => {
         if (res.data.data && res.data.status === 200 && res.data.msg === 'OK') {
-          my.alert({ title: 'ok', content: '提交成功呢!~' })
+          const orderid = res.data.data
+          if (orderid) {
+            const cart_item_id_array = my.getStorageSync({ key: 'cart_item_id_array' }).data
+            const pcart_item_id_array = my.getStorageSync({ key: 'pcart_item_id_array' }).data
+            for (const item_p of pcart_item_id_array) {
+              for (const index in cart_item_id_array) {
+                if (item_p.id === cart_item_id_array[index].id) {
+                  cart_item_id_array.splice(index, 1)
+                }
+              }
+            }
+            my.setStorageSync({ key: 'cart_item_id_array', data: cart_item_id_array })
+            my.removeStorageSync({ key: 'pcart_item_id_array' })
+            my.switchTab({
+              url: '../index/index'
+            })
+          }
         } else {
           my.alert({ title: '提交失败', content: '系统错误了哟!~' })
         }
@@ -65,6 +86,9 @@ Page({
       fail: ((err) => {
         console.log(err)
         my.alert({ title: '提交失败', content: '系统错误了哟!~' })
+      }),
+      complete: (() => {
+        my.hideNavigationBarLoading();
       })
     });
   }
