@@ -7,5 +7,9 @@ App({
     cartItem.id = id
     cartItem.counts = counts
     return cartItem
+  },
+  // 用户对象
+  getGlobalUserInfo () {
+    return null
   }
 });

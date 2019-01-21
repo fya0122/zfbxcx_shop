@@ -1,4 +1,4 @@
-<form>
+<form onSubmit="submitAddress">
   <view class="myaddress">
     <view class="address-line border-line">
       <view class="ico-label">
@@ -18,7 +18,7 @@
         <input style="height: auto" type="digit" name="mobile" maxlength="11" class="user-address"/>
       </view>
     </view>
-    <choosecity city="北京"/>
+    <choosecity city="点击选择城市!~" onDistributeCity="onDistributeCity"/>
     <view class="address-line">
       <view class="ico-label">
         <image class="address-ico" src="../../resources/icon/smallIco/address-desc.png"/>

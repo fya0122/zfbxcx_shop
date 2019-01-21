@@ -1,6 +1,10 @@
 Component({
   props: {
-    city: ''
+    city: {
+      type: String,
+      value: ''
+    },
+    onDistributeCity: () => {}
   },
   methods: {
     chooseCity () {
@@ -24,9 +28,17 @@ Component({
         success: (res) => {
           this.setData({
             city: res.city
-          })    
+          })
+          // 派发给父亲，让父亲去拿到这个数据呢
+          this._distributeToPater(res.city)
         },
       });
+    },
+    // 派发给父亲，让父亲去拿到这个数据呢
+    _distributeToPater (city) {
+      this.props.onDistributeCity({
+        city: city
+      })
     }
   },
 });
