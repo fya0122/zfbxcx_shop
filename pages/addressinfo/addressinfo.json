@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "choosecity": "../../components/choosecity/choosecity"
+  }
+}
