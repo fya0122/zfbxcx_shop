@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/addressinfo/addressinfo",
     "pages/addresslist/addresslist",
     "pages/index/index",
     "pages/cart/cart",
     "pages/classify/classify",
     "pages/classifylist/classifylist",
     "pages/classifydetail/classifydetail",
-    "pages/confirmorder/confirmorder",
-    "pages/addressinfo/addressinfo"
+    "pages/confirmorder/confirmorder"
   ],
   "window": {
     "defaultTitle": "imooc购物",
