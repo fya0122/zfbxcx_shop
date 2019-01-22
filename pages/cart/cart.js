@@ -17,7 +17,6 @@ Page({
   },
   _getShoppingCartData () {
     const cart = my.getStorageSync({ key: 'cart_item_id_array' }).data
-    console.log(cart)
     if (cart && cart.length > 0) {
       my.showNavigationBarLoading()
       if (Array.isArray(cart) === true) {

@@ -6,7 +6,7 @@
         <view class="address-label">收货人：</view>
       </view>
       <view>
-        <input style="height: auto" name="receiver" maxlength="6" class="user-address"/>
+        <input value="{{addressinfo.receiver}}" style="height: auto" name="receiver" maxlength="6" class="user-address"/>
       </view>
     </view>
     <view class="address-line border-line">
@@ -15,17 +15,17 @@
         <view class="address-label">手机号：</view>
       </view>
       <view>
-        <input style="height: auto" type="digit" name="mobile" maxlength="11" class="user-address"/>
+        <input value="{{addressinfo.mobile}}" style="height: auto" type="digit" name="mobile" maxlength="11" class="user-address"/>
       </view>
     </view>
-    <choosecity city="点击选择城市!~" onDistributeCity="onDistributeCity"/>
+    <choosecity city="{{defaultCity}}" onDistributeCity="onDistributeCity"/>
     <view class="address-line">
       <view class="ico-label">
         <image class="address-ico" src="../../resources/icon/smallIco/address-desc.png"/>
         <view class="address-label">详细地址：</view>
       </view>
       <view>
-        <input style="height: auto" class="user-address" name="descAddress" maxlength="50"/>
+        <input value="{{addressinfo.descAddress}}" style="height: auto" class="user-address" name="descAddress" maxlength="50"/>
       </view>
     </view>
   </view>

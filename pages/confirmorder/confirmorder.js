@@ -14,8 +14,6 @@ Page({
   // 得到订单
   _getConfirmOrderData () {
     let confirmOrder = my.getStorageSync({ key: 'pcart_item_id_array' }).data;
-    console.log('this is confirmOrder')
-    console.log(confirmOrder)
     let totalPrice = 0
     for (const item of confirmOrder) {
       totalPrice += item.counts * parseInt(item.priceDiscountYuan)
@@ -33,7 +31,6 @@ Page({
       method: 'POST',
       success: ((res) => {
         if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
-          console.log(res.data.data)
           this.setData({
             isExistAddress: true,
             defaultAddressInfo: res.data.data
@@ -80,8 +77,6 @@ Page({
     for (const item of confirmOrder) {
       itemStr += `${item.id}|${item.counts},`
     }
-    console.log('this is itemStr')
-    console.log(itemStr)
     my.httpRequest({
       url: app.baseServerUrl + '/order/createOrder',
       method: 'POST',

@@ -1,58 +1,33 @@
 <radio-group onChange="selectradioaddress">
-  <view class="address-outter">
-    <view class="address-info">
-      <view class="address-line">
-        <view>fya0122</view>
-        <view>18730930122</view>
+  <block a:for="{{addressList}}">
+    <view class="address-outter">
+      <view class="address-info">
+        <view class="address-line">
+          <view>{{item.receiver}}</view>
+          <view>{{item.mobile}}</view>
+        </view>
+        <view class="address-desc">{{item.city}}{{item.descAddress}}</view>
       </view>
-      <view class="address-desc">河北省石家庄市桥西区啊啊啊啊啊啊啊</view>
-    </view>
-    <view class="operator">
-      <view class="set-default">
-        <!-- <label>
-          <radio style="width: 30rpx;height: 30rpx"/>设置默认
-        </label> -->
-        <label style="display: flex;align-items: center;">
-          <radio/>设置默认
-        </label>
-      </view>
-      <view class="oper-block" onTap="goToAddress">
-        <image class="oper-ico" src="../../resources/icon/smallIco/modify.png"/>
-        <view class="display-words">编辑</view>
-      </view>
-      <view class="oper-block">
-        <image src="../../resources/icon/smallIco/delete.png" class="oper-ico"/>
-        <view class="display-words" onTap="deleteMe">删除</view>
-      </view>
-    </view>
-  </view>
-  <view class="address-outter">
-    <view class="address-info">
-      <view class="address-line">
-        <view>fya0122</view>
-        <view>18730930122</view>
-      </view>
-      <view class="address-desc">河北省石家庄市桥西区啊啊啊啊啊啊啊</view>
-    </view>
-    <view class="operator">
-      <view class="set-default">
-        <label style="display: flex;align-items: center;">
-          <radio/>设置默认
-        </label>
-      </view>
-      <view class="oper-block">
-        <image class="oper-ico" src="../../resources/icon/smallIco/modify.png"/>
-        <view class="display-words">编辑</view>
-      </view>
-      <view class="oper-block">
-        <image src="../../resources/icon/smallIco/delete.png" class="oper-ico"/>
-        <view class="display-words" onTap="deleteMe">删除</view>
+      <view class="operator">
+        <view class="set-default">
+          <label style="display: flex;align-items: center;">
+            <radio/>设置默认
+          </label>
+        </view>
+        <view class="oper-block" data-id="{{item.id}}" onTap="editYourAddress">
+          <image class="oper-ico" src="../../resources/icon/smallIco/modify.png"/>
+          <view class="display-words">编辑</view>
+        </view>
+        <view class="oper-block">
+          <image src="../../resources/icon/smallIco/delete.png" class="oper-ico"/>
+          <view class="display-words" onTap="deleteMe">删除</view>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
 </radio-group>
 <!-- 底部操作按钮 -->
 <view class="bottom-operator">
   <view class="confirm-choose">确认选择</view>
-  <view class="add-new-address">新增地址</view>
+  <view class="add-new-address" onTap="goToAddress">新增地址</view>
 </view>
