@@ -1,9 +1,18 @@
 const app = getApp()
 Page({
   data: {
-    addressList: []
+    addressList: [],
+    addressId: null,
+    flag: false // 当你删掉默认的时候红框的时候，猛的下红框会不显示
   },
-  onShow() {
+  onLoad (e) {
+    if (e.id) {
+      this.setData({
+        addressId: e.id
+      })
+    }
+  },
+  onShow () {
     this._getAddressList()
   },
   selectradioaddress (e) {
@@ -65,16 +74,13 @@ Page({
           if (res.confirm === true && res.ok === true) {
             my.httpRequest({
               url: app.baseServerUrl + `/address/delete/${id}`,
-              // data: {
-              //   addressId: id
-              // },
               method: 'POST',
               success: ((res) => {
                 if (res.data.status === 200 && res.data.msg === 'OK') {
                   my.showToast({
                     content: '删除成功',
                     success: (() => {
-                      my.navigateBack({});
+                      this._getAddressList()
                     })
                   });
                 } else {
@@ -92,6 +98,15 @@ Page({
           }
         }
       });
+    }
+  },
+  // 选择默认地址
+  selectDefaultAddress (e) {
+    const id = e.currentTarget.dataset.id
+    if (id) {
+      this.setData({
+        addressId: id
+      })
     }
   }
 });

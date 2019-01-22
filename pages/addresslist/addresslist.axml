@@ -1,6 +1,6 @@
 <radio-group class="container" onChange="selectradioaddress">
   <block a:for="{{addressList}}">
-    <view class="address-outter">
+    <view data-id="{{item.id}}" onTap="selectDefaultAddress" class="address-outter" style="border-style: dashed;border-color: #ff6699;border-width: {{addressId === item.id ? '2rpx' : '0rpx'}}">
       <view class="address-info">
         <view class="address-line">
           <view>{{item.receiver}}</view>

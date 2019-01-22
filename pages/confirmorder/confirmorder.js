@@ -122,6 +122,9 @@ Page({
   },
   // 跳转到地址页呢
   gotoaddresslist () {
-    my.navigateTo({ url: '../addresslist/addresslist' });
+    if (this.data.defaultAddressInfo.id) {
+      const id = this.data.defaultAddressInfo.id
+      my.navigateTo({ url: `../addresslist/addresslist?id=${id}` });
+    }
   }
 });
