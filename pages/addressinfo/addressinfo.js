@@ -25,7 +25,7 @@ Page({
         if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
           this.setData({
             addressinfo: res.data.data,
-            defaultCity: res.data.data.city
+            defaultCity: res.data.data.city // 传递给子组件，让子组件是展示而改变city
           })
         } else {
           this.setData({

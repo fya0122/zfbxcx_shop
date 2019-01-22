@@ -7,8 +7,10 @@ Page({
     isExistAddress: false,
     defaultAddressInfo: {}
   },
-  onLoad() {
+  onLoad () {
     this._getConfirmOrderData()
+  },
+  onShow () {
     this._getDefaultAddressByUserId()
   },
   // 得到订单

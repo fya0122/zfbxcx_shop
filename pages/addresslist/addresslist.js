@@ -51,5 +51,47 @@ Page({
     my.navigateTo({
       url: `../addressinfo/addressinfo?id=${id}`
     });
+  },
+  // 删除地址
+  deleteAddress (e) {
+    const id = e.currentTarget.dataset.id
+    if (id) {
+      my.confirm({
+        title: '删除操作',
+        content: '确认删除该地址吗？',
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        success: (res) => {
+          if (res.confirm === true && res.ok === true) {
+            my.httpRequest({
+              url: app.baseServerUrl + `/address/delete/${id}`,
+              // data: {
+              //   addressId: id
+              // },
+              method: 'POST',
+              success: ((res) => {
+                if (res.data.status === 200 && res.data.msg === 'OK') {
+                  my.showToast({
+                    content: '删除成功',
+                    success: (() => {
+                      my.navigateBack({});
+                    })
+                  });
+                } else {
+                  my.showToast({
+                    content: '删除失败'
+                  });
+                }
+              }),
+              fail: (() => {
+                my.showToast({
+                  content: '删除失败'
+                });
+              })
+            });
+          }
+        }
+      });
+    }
   }
 });

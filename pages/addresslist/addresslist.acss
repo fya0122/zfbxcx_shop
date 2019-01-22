@@ -4,6 +4,9 @@ page {
   flex-direction: column;
   background-color: #f2f5f8;
 }
+.container {
+  padding-bottom: 100rpx;
+}
 /* 粉色虚线框 */
 .unPickMe {
   border-style: dashed; 

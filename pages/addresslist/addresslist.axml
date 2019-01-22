@@ -1,4 +1,4 @@
-<radio-group onChange="selectradioaddress">
+<radio-group class="container" onChange="selectradioaddress">
   <block a:for="{{addressList}}">
     <view class="address-outter">
       <view class="address-info">
@@ -18,9 +18,9 @@
           <image class="oper-ico" src="../../resources/icon/smallIco/modify.png"/>
           <view class="display-words">编辑</view>
         </view>
-        <view class="oper-block">
+        <view class="oper-block" data-id="{{item.id}}" onTap="deleteAddress">
           <image src="../../resources/icon/smallIco/delete.png" class="oper-ico"/>
-          <view class="display-words" onTap="deleteMe">删除</view>
+          <view class="display-words">删除</view>
         </view>
       </view>
     </view>
