@@ -8,15 +8,15 @@
 <view class="full-address" onTap="gotoaddresslist" a:if="{{isExistAddress === true}}">
   <view class="contact-info">
     <view>收货人：</view>
-    <view>范延安</view>
-    <view>18730930122</view>
+    <view>{{defaultAddressInfo.receiver}}</view>
+    <view>{{defaultAddressInfo.mobile}}</view>
   </view>
   <view class="address-info">
     <image class="location-ico" src="../../resources/icon/smallIco/location.png"/>
-    <view class="address-province">河北</view>
-    <view class="address-city">石家庄</view>
-    <view class="address-district">桥西区</view>
-    <view class="address-desc">西三教</view>
+    <!-- <view class="address-province">{{defaultAddressInfo.province}}</view> -->
+    <view class="address-city">{{defaultAddressInfo.city}}</view>
+    <!-- <view class="address-district">桥西区</view> -->
+    <view class="address-desc">{{defaultAddressInfo.descAddress}}</view>
     <image class="arrow-left-ico" src="../../resources/icon/smallIco/arrow-left.png"/>
   </view>
 </view>

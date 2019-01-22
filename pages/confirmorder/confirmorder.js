@@ -4,10 +4,12 @@ Page({
     confirmOrder: [],
     totalPrice: 0,
     orderRemark: '用户并未留下备注信息',
-    isExistAddress: false
+    isExistAddress: false,
+    defaultAddressInfo: {}
   },
   onLoad() {
     this._getConfirmOrderData()
+    this._getDefaultAddressByUserId()
   },
   // 得到订单
   _getConfirmOrderData () {
@@ -22,7 +24,35 @@ Page({
       confirmOrder: confirmOrder,
       totalPrice: totalPrice
     })
-    console.log(this.data.confirmOrder)
+  },
+  // 得到默认的用户地址呢
+  _getDefaultAddressByUserId () {
+    let userId = 1001
+    my.httpRequest({
+      url: app.baseServerUrl + `/address/default/${userId}`,
+      method: 'POST',
+      success: ((res) => {
+        if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
+          console.log(res.data.data)
+          this.setData({
+            isExistAddress: true,
+            defaultAddressInfo: res.data.data
+          })
+        } else {
+          this.setData({
+            isExistAddress: false,
+            defaultAddressInfo: {}
+          })
+        }
+      }),
+      fail: ((err) => {
+        console.log(err)
+        this.setData({
+          isExistAddress: false,
+          defaultAddressInfo: {}
+        })
+      })
+    });
   },
   // input框的改变
   changeInputHandle (e) {
@@ -95,7 +125,6 @@ Page({
   },
   // 跳转到地址页呢
   gotoaddresslist () {
-    // my.navigateTo({ url: '../../addresslist/addresslist' });
-    my.switchTab({ url: '../addresslist/addresslist' });
+    my.navigateTo({ url: '../addresslist/addresslist' });
   }
 });

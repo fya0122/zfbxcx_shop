@@ -6,7 +6,7 @@ Page({
     console.log(123)
   },
   goToAddress () {
-    my.switchTab({
+    my.navigateTo({
       url: '../addressinfo/addressinfo'
     });
   }
