@@ -1,4 +1,9 @@
 Page({
-  data: {},
-  onLoad() {},
+  data: {
+    userInfo: {},
+    isLogin: false
+  },
+  onLoad () {
+    console.log(123)
+  }
 });

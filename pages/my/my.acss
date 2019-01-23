@@ -1,0 +1,63 @@
+page {
+  display: flex;
+  flex-direction: column;
+  background: #f2f5f8;
+}
+/* 用户未登陆 */
+.login-block {
+  background: white;
+  padding: 25rpx 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.btn-login {
+  width: 140rpx;
+  color: white;
+  background: #ff6699;
+  font-size: 26rpx;
+  padding: 16rpx 30rpx;
+  /* margin-top: 20rpx; */
+  border-radius: 50rpx;
+  text-align: center;
+}
+/* 用户登陆 */
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  padding: 22rpx 14rpx;
+}
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.user-words {
+  display: flex;
+  flex-direction: column;
+  width: 530rpx;
+}
+.nickname {
+  font-size: 40rpx;
+  margin-top: 12rpx;
+}
+.ico-block {
+  display: flex;
+  flex-direction: row;
+}
+.vipcard-ico {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.certified-ico {
+  width: 101rpx;
+  height: 64rpx;
+}
+.set-ico {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 12rpx;
+}

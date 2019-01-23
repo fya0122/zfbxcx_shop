@@ -1,3 +1,16 @@
-<view>
-  New Page
+<!-- 用户未登陆的情况下 -->
+<view class="login-block" a:if="{{isLogin === false}}">
+  <view class="btn-login">登陆</view>
+</view>
+<!-- 用户登陆的情况下 -->
+<view class="userinfo" a:if="{{isLogin === true}}">
+  <image class="avatar" src=""/>
+  <view class="user-words">
+    <view class="nickname">慕课网</view>
+    <view class="ico-block">
+      <image class="vipcard-ico" src="../../resources/icon/smallIco/vip.png"/>
+      <image class="certified-ico" src="../../resources/icon/smallIco/certified.png"/>
+    </view>
+  </view>
+  <image class="set-ico" src="../../resources/icon/smallIco/settings.png"/>
 </view>
