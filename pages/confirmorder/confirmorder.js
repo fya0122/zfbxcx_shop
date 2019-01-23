@@ -94,14 +94,25 @@ Page({
           if (orderid) {
             const cart_item_id_array = my.getStorageSync({ key: 'cart_item_id_array' }).data
             const pcart_item_id_array = my.getStorageSync({ key: 'pcart_item_id_array' }).data
-            for (const item_p of pcart_item_id_array) {
-              for (const index in cart_item_id_array) {
-                if (item_p.id === cart_item_id_array[index].id) {
-                  cart_item_id_array.splice(index, 1)
-                }
+            // for (const item_p of pcart_item_id_array) {
+            //   for (const index in cart_item_id_array) {
+            //     if (item_p.id === cart_item_id_array[index].id) {
+            //       cart_item_id_array.splice(index, 1)
+            //     }
+            //   }
+            // }
+            // 新版老徐的写法
+            const c = cart_item_id_array.concat(pcart_item_id_array)
+            let temp = {}
+            let result = []
+            c.map((item) => {
+              if (!temp[item.id]) {
+                result.push(item)
+                temp[item.id] = true
               }
-            }
-            my.setStorageSync({ key: 'cart_item_id_array', data: cart_item_id_array })
+            })
+            // my.setStorageSync({ key: 'cart_item_id_array', data: cart_item_id_array })
+            my.setStorageSync({ key: 'cart_item_id_array', data: result })
             my.removeStorageSync({ key: 'pcart_item_id_array' })
             my.switchTab({
               url: '../index/index'

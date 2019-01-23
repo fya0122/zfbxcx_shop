@@ -7,7 +7,8 @@
     "pages/classify/classify",
     "pages/classifylist/classifylist",
     "pages/classifydetail/classifydetail",
-    "pages/confirmorder/confirmorder"
+    "pages/confirmorder/confirmorder",
+    "pages/my/my"
   ],
   "window": {
     "defaultTitle": "imooc购物",
@@ -35,6 +36,12 @@
         "name": "购物车",
         "icon": "resources/icon/tabBar/shopping-car.png",
         "activeIcon": "resources/icon/tabBar/shopping-car-sel.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "name": "我的",
+        "icon": "resources/icon/tabBar/mine.png",
+        "activeIcon": "resources/icon/tabBar/mine-sel.png"
       }
     ]
   }
