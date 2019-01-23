@@ -1,4 +1,4 @@
-<radio-group class="container" onChange="selectradioaddress">
+<view class="container">
   <block a:for="{{addressList}}">
     <view data-id="{{item.id}}" onTap="selectDefaultAddress" class="address-outter" style="border-style: dashed;border-color: #ff6699;border-width: {{addressId === item.id ? '2rpx' : '0rpx'}}">
       <view class="address-info">
@@ -10,9 +10,9 @@
       </view>
       <view class="operator">
         <view class="set-default">
-          <label style="display: flex;align-items: center;">
+          <!-- <label style="display: flex;align-items: center;">
             <radio/>设置默认
-          </label>
+          </label> -->
         </view>
         <view class="oper-block" data-id="{{item.id}}" onTap="editYourAddress">
           <image class="oper-ico" src="../../resources/icon/smallIco/modify.png"/>
@@ -25,9 +25,9 @@
       </view>
     </view>
   </block>
-</radio-group>
+</view>
 <!-- 底部操作按钮 -->
 <view class="bottom-operator">
-  <view class="confirm-choose">确认选择</view>
+  <view class="confirm-choose" onTap="confirmSelectAddress">确认选择</view>
   <view class="add-new-address" onTap="goToAddress">新增地址</view>
 </view>

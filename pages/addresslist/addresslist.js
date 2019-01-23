@@ -2,8 +2,7 @@ const app = getApp()
 Page({
   data: {
     addressList: [],
-    addressId: null,
-    flag: false // 当你删掉默认的时候红框的时候，猛的下红框会不显示
+    addressId: null
   },
   onLoad (e) {
     if (e.id) {
@@ -15,10 +14,10 @@ Page({
   onShow () {
     this._getAddressList()
   },
-  selectradioaddress (e) {
-    console.log(e)
-    console.log(123)
-  },
+  // selectradioaddress (e) {
+  //   console.log(e)
+  //   console.log(123)
+  // },
   // 跳转到addressinfo页面
   goToAddress () {
     my.navigateTo({
@@ -34,9 +33,28 @@ Page({
       method: 'POST',
       success: ((res) => {
         if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
-          this.setData({
-            addressList: res.data.data
-          })
+          if (res.data.data.length > 0) {
+            this.setData({
+              addressList: res.data.data
+            })
+            if (res.data.data.length === 1) {
+              this.setData({
+                addressId: res.data.data[0].id
+              })
+            }
+          } else {
+            my.confirm({
+              title: '检测到您无默认地址',
+              content: '点击确认进行添加',
+              success: ((res) => {
+                if (res.confirm) {
+                  this.goToAddress()
+                } else {
+                  my.navigateBack({});
+                }
+              })
+            });
+          }
         } else {
           this.setData({
             addressList: []
@@ -100,13 +118,41 @@ Page({
       });
     }
   },
-  // 选择默认地址
+  // 选择默认地址(让红框移动)
   selectDefaultAddress (e) {
     const id = e.currentTarget.dataset.id
     if (id) {
       this.setData({
         addressId: id
       })
+    }
+  },
+  // 点击确认选择
+  confirmSelectAddress () {
+    const id = this.data.addressId
+    if (id) {
+      my.httpRequest({
+        url: app.baseServerUrl + '/address/setDefault',
+        data: {
+          userId: '1001',
+          addressId: id,
+        },
+        method: 'POST',
+        success: ((res) => {
+          if (res.data.status === 200 && res.data.msg === 'OK') {
+            my.showToast({
+              content: '设置地址成功!',
+              success: (() => {
+                my.navigateBack({});
+              })
+            });
+          }
+        })
+      });
+    } else {
+      my.alert({
+        title: '系统错误!' 
+      });
     }
   }
 });

@@ -125,6 +125,8 @@ Page({
     if (this.data.defaultAddressInfo.id) {
       const id = this.data.defaultAddressInfo.id
       my.navigateTo({ url: `../addresslist/addresslist?id=${id}` });
+    } else {
+      my.navigateTo({ url: `../addresslist/addresslist` });
     }
   }
 });
