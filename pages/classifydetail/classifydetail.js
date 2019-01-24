@@ -101,8 +101,9 @@ Page({
   },
   // 放入购物车
   cartItemIncrease (id) {
-    const shoppingCart = my.getStorageSync({ key: 'cart_item_id_array' }).data
+    let shoppingCart = my.getStorageSync({ key: 'cart_item_id_array' }).APDataStorage || my.getStorageSync({ key: 'cart_item_id_array' }).data
     if (shoppingCart !== null && shoppingCart !== undefined) { // 本地有这个购物车
+      shoppingCart = JSON.parse(shoppingCart)
       const result = shoppingCart.find(e => e.id === id)
       if (result) { // 如果购物车有这个id，那么这个id的数量+1
         result.counts = result.counts + 1
@@ -110,13 +111,13 @@ Page({
         console.log(shoppingCart)
         my.setStorageSync({
           key: 'cart_item_id_array',
-          data: shoppingCart
+          data: JSON.stringify(shoppingCart)
         })
       } else { // 代表这个购物车没有这个id，让这个商品的数量为1
         shoppingCart.push(app.cartItem(id, 1))
         my.setStorageSync({
           key: 'cart_item_id_array',
-          data: shoppingCart
+          data: JSON.stringify(shoppingCart)
         })
       }
     } else { // 代表没有购物车，那么我们创建个空的数组，代表购物车，并且，你点击的那个id的数量为1
@@ -124,7 +125,7 @@ Page({
       myArr.push(app.cartItem(id, 1))
       my.setStorageSync({
         key: 'cart_item_id_array',
-        data: myArr
+        data: JSON.stringify(myArr)
       })
     }
   },
@@ -153,7 +154,7 @@ Page({
     }
     let pcart_item_id_array = []
     pcart_item_id_array.push(buyObj)
-    my.setStorageSync({ key: 'pcart_item_id_array', data: pcart_item_id_array })
+    my.setStorageSync({ key: 'pcart_item_id_array', data: JSON.stringify(pcart_item_id_array) })
     my.navigateTo({ url: '../confirmorder/confirmorder' })
   }
 });

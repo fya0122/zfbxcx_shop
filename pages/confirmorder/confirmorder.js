@@ -15,8 +15,11 @@ Page({
   },
   // 得到订单
   _getConfirmOrderData () {
-    let confirmOrder = my.getStorageSync({ key: 'pcart_item_id_array' }).data;
+    let confirmOrder = my.getStorageSync({ key: 'pcart_item_id_array' }).APDataStorage || my.getStorageSync({ key: 'pcart_item_id_array' }).data;
     let totalPrice = 0
+    if (confirmOrder) {
+      confirmOrder = JSON.parse(confirmOrder)
+    }
     for (const item of confirmOrder) {
       totalPrice += item.counts * parseInt(item.priceDiscountYuan)
     }
@@ -105,8 +108,14 @@ Page({
           if (res.data.data && res.data.status === 200 && res.data.msg === 'OK') {
             const orderid = res.data.data
             if (orderid) {
-              const cart_item_id_array = my.getStorageSync({ key: 'cart_item_id_array' }).data
-              const pcart_item_id_array = my.getStorageSync({ key: 'pcart_item_id_array' }).data
+              let cart_item_id_array = my.getStorageSync({ key: 'cart_item_id_array' }).APDataStorage || my.getStorageSync({ key: 'cart_item_id_array' }).data
+              let pcart_item_id_array = my.getStorageSync({ key: 'pcart_item_id_array' }).APDataStorage || my.getStorageSync({ key: 'pcart_item_id_array' }).data
+              if (cart_item_id_array) {
+                cart_item_id_array = JSON.parse(cart_item_id_array)
+              }
+              if (pcart_item_id_array) {
+                pcart_item_id_array = JSON.parse(pcart_item_id_array)
+              }
               for (const item_p of pcart_item_id_array) {
                 for (const index in cart_item_id_array) {
                   if (item_p.id === cart_item_id_array[index].id) {
@@ -124,7 +133,7 @@ Page({
               //     temp[item.id] = true
               //   }
               // })
-              my.setStorageSync({ key: 'cart_item_id_array', data: cart_item_id_array })
+              my.setStorageSync({ key: 'cart_item_id_array', data: JSON.stringify(cart_item_id_array) })
               // my.setStorageSync({ key: 'cart_item_id_array', data: result })
               my.removeStorageSync({ key: 'pcart_item_id_array' })
               my.switchTab({

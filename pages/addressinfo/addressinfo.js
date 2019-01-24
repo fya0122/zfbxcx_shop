@@ -81,7 +81,7 @@ Page({
             success: (res) => {
               if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
                 const myaddress = res.data.data
-                my.setStorageSync({ key: 'addressChoosed', data: myaddress })
+                my.setStorageSync({ key: 'addressChoosed', data: JSON.stringify(myaddress) })
                 // my.switchTab({ url: '../../addresslist/addresslist' })
                 my.navigateBack({
                   delta: 1

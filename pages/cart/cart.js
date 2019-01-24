@@ -7,7 +7,7 @@ Page({
     totalPrice: 0,
     totalCount: 0
   },
-  onShow() {
+  onShow () {
     this._getShoppingCartData()
   },
   helpYourSelf () {
@@ -16,8 +16,18 @@ Page({
     });
   },
   _getShoppingCartData () {
-    const cart = my.getStorageSync({ key: 'cart_item_id_array' }).data
-    if (cart && cart.length > 0) {
+    let cart = my.getStorageSync({ key: 'cart_item_id_array' }).APDataStorage || my.getStorageSync({ key: 'cart_item_id_array' }).data
+    if (typeof cart === 'string') {
+      if (cart.length === 2) {
+        this.setData({
+          isHasValue: false,
+          cartList: []
+        })
+        return
+      }
+    }
+    if (cart) {
+      cart = JSON.parse(cart)
       my.showNavigationBarLoading()
       if (Array.isArray(cart) === true) {
         let itemIds = ''
@@ -107,7 +117,7 @@ Page({
     this.setData({
       cartList: cartList
     })
-    my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
+    my.setStorageSync({ key: 'cart_item_id_array', data: JSON.stringify(this.data.cartList) })
     this._checkAll(this.data.cartList)
     this._calculatePriceAndCount(this.data.cartList)
   },
@@ -174,7 +184,7 @@ Page({
         cartList: cartList
       })
     }
-    my.setStorageSync({ key: 'cart_item_id_array', data: this.data.cartList })
+    my.setStorageSync({ key: 'cart_item_id_array', data: JSON.stringify(this.data.cartList) })
     this._calculatePriceAndCount(this.data.cartList)
   },
   // 去确认的页面
@@ -186,7 +196,7 @@ Page({
       totalPrice += item.counts * parseInt(item.priceDiscountYuan)
     }
     if (totalPrice > 0) {
-      my.setStorageSync({ key: 'pcart_item_id_array', data: pcart });
+      my.setStorageSync({ key: 'pcart_item_id_array', data: JSON.stringify(pcart) });
       my.hideNavigationBarLoading();
       my.navigateTo({
         url: '../confirmorder/confirmorder'
