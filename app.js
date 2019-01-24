@@ -10,6 +10,17 @@ App({
   },
   // 用户对象
   getGlobalUserInfo () {
-    return null
+    const userInfo = my.getStorageSync({ key: 'yourGlobalUserInfo' }).data
+    console.log('app.js')
+    console.log(userInfo)
+    if (userInfo) {
+      return userInfo
+    } else {
+      return null
+    }
+  },
+  // 设置用户对象
+  setGlobalUserInfo (userInfo) {
+    my.setStorageSync({ key: 'yourGlobalUserInfo', data: userInfo });
   }
 });

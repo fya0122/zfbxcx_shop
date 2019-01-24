@@ -1,15 +1,18 @@
 <!-- 用户未登陆的情况下 -->
 <view class="login-block" a:if="{{isLogin === false}}">
-  <view class="btn-login">登陆</view>
+  <view class="btn-login" onTap="_userAuthorized">登陆</view>
 </view>
 <!-- 用户登陆的情况下 -->
 <view class="userinfo" a:if="{{isLogin === true}}">
-  <image class="avatar" src=""/>
+  <image a:if="{{userInfo.faceImage}}" class="avatar" src="{{userInfo.faceImage}}"/>
+  <image a:else class="avatar" src="https://img2.mukewang.com/5c48917b0001f91d08001066-140-140.jpg"/>
   <view class="user-words">
-    <view class="nickname">慕课网</view>
+    <view class="nickname">{{userInfo.nickname}}</view>
     <view class="ico-block">
       <image class="vipcard-ico" src="../../resources/icon/smallIco/vip.png"/>
-      <image class="certified-ico" src="../../resources/icon/smallIco/certified.png"/>
+      <block a:if="{{userInfo.isCertified === 1}}">
+        <image class="certified-ico" src="../../resources/icon/smallIco/certified.png"/>
+      </block>
     </view>
   </view>
   <image class="set-ico" src="../../resources/icon/smallIco/settings.png"/>
