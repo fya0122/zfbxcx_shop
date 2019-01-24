@@ -15,5 +15,5 @@
       </block>
     </view>
   </view>
-  <image class="set-ico" src="../../resources/icon/smallIco/settings.png"/>
+  <image onTap="logout" class="set-ico" src="../../resources/icon/smallIco/settings.png"/>
 </view>

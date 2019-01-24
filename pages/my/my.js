@@ -66,5 +66,20 @@ Page({
         }
       },
     });
+  },
+  // 退出
+  logout () {
+    my.showActionSheet({
+      items: ['退出'],
+      success: ((res) => {
+        if (res.index === 0) {
+          my.clearStorageSync()
+          this.setData({
+            isLogin: false,
+            userInfo: {}
+          })
+        }
+      })
+    });
   }
 });
