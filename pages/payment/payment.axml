@@ -14,5 +14,5 @@
     <view class="total-words">总支付：</view>
     <view class="total-amount">￥{{orderprice}}</view>
   </view>
-  <view class="submit-order">付款</view>
+  <view class="submit-order" onTap="doAlipay">付款</view>
 </view>
