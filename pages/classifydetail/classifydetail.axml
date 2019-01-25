@@ -64,9 +64,13 @@
     <image class="like-ico" src="../../resources/icon/smallIco/{{cartIco}}.png"/>
     <view class="like-words">购物车</view>
   </view>
-  <view class="like-img" onTap="">
+  <view class="like-img" data-is-already-collection="{{isAlreadyCollection}}" a:if="{{isAlreadyCollection === 0}}" onTap="handleCollection">
     <image class="like-ico" src="../../resources/icon/smallIco/unlike.png"/>
     <view class="like-words">收藏</view>
+  </view>
+  <view class="like-img" data-is-already-collection="{{isAlreadyCollection}}" a:if="{{isAlreadyCollection === 1}}" onTap="handleCollection">
+    <image class="like-ico" src="../../resources/icon/smallIco/like.png"/>
+    <view class="like-words">取消收藏</view>
   </view>
   <view class="add-to-cart" data-id="{{currentObj.id}}" onTap="addToCart">
     <!-- 定义动画组件，创建实例 -->

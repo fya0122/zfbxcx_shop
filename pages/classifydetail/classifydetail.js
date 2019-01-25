@@ -4,7 +4,9 @@ Page({
     currentObj: {},
     animationInfo: {}, // 动画对象，默认为{}，但在onShow已经进行了实例化
     animationOpacity: 0, // 透明度
-    cartIco: 'cart-empty'
+    cartIco: 'cart-empty',
+    userInfo: {},
+    isAlreadyCollection: 0 // 是否已经收藏，0代表未收藏，1代表收藏
   },
   onLoad(e) {
     const id = e.id
@@ -19,6 +21,7 @@ Page({
       animationInfo: animation.export()
     })
   },
+  // 根据id获取具体的某个detail
   _getSpecificDataById (id) {
     my.showNavigationBarLoading();
     my.httpRequest({
@@ -57,8 +60,148 @@ Page({
       }),
       complete: (() => {
         my.hideNavigationBarLoading();
+        this._checkIsCollection() // 检测是否收藏
       })
     });
+  },
+  // 检测是否收藏
+  _checkIsCollection () {
+    const userInfo = app.getGlobalUserInfo()
+    if (userInfo) {
+      this.setData({
+        userInfo: userInfo
+      })
+      // 根据用户id去检测是否收藏
+      this._checkIsCollectionByUserId(this.data.userInfo.id)
+    } else {
+      this._userAuthorized() // 去登陆
+    }
+  },
+  // 授权登录
+  _userAuthorized () {
+    my.showNavigationBarLoading()
+    my.getAuthCode({
+      scopes: 'auth_user',
+      success: (res) => {
+        if (res.authCode) {
+          this._yourLogin(res.authCode)
+        } else {
+          this.setData({
+            userInfo: {},
+          })
+        }
+      },
+      fail: ((err) => {
+        console.log(err)
+        this.setData({
+          userInfo: {}
+        })
+      }),
+      complete: (() => {
+        my.hideNavigationBarLoading();
+      })
+    });
+  },
+  // 登录借口
+  _yourLogin (code) {
+    my.httpRequest({
+      url: app.baseServerUrl + `/team/login/${code}/1144642211`,
+      method: 'POST',
+      success: (res) => {
+        if (res.data.status === 200 && res.data.msg === 'OK' && res.data.data) {
+          this.setData({
+            userInfo: res.data.data
+          })
+          app.setGlobalUserInfo(this.data.userInfo)
+          this._checkIsCollectionByUserId(this.data.userInfo.id)
+        } else {
+          this.setData({
+            userInfo: {}
+          })
+        }
+      },
+    });
+  },
+  // 根据用户id去检测是否收藏
+  _checkIsCollectionByUserId (id) {
+    my.httpRequest({
+      url: app.baseServerUrl + '/item/userIsLikeItem',
+      data: {
+        userId: id,
+        itemId: this.data.currentObj.id
+      },
+      method: 'POST',
+      success: ((res) => {
+        if (res.data.status === 200 && res.data.msg === 'OK') {
+          this.setData({
+            isAlreadyCollection: res.data.data
+          })
+        }
+      })
+    });
+  },
+  // 加入收藏/取消收藏
+  handleCollection (e) {
+    const isAlreadyCollection = e.currentTarget.dataset.isAlreadyCollection
+    if (isAlreadyCollection === 0) { // 0代表没收藏，那么我们点击后，肯定是要去收藏的
+      this.setData({
+        isAlreadyCollection: 1
+      })
+      my.httpRequest({
+        url: app.baseServerUrl + '/item/like',
+        data: {
+          itemId: this.data.currentObj.id,
+          userId: this.data.userInfo.id
+        },
+        method: 'POST',
+        success: ((res) => {
+          if (res.data.status === 200 && res.data.msg === 'OK') {
+            my.showToast({
+              content: '收藏成功!'
+            });
+          } else {
+            my.showToast({
+              content: '收藏失败!'
+            });
+          }
+        }),
+        fail: ((err) => {
+          console.log(err)
+          my.showToast({
+            content: '收藏失败!'
+          });
+        })
+      });
+    } else if (isAlreadyCollection === 1) {
+      this.setData({
+        isAlreadyCollection: 0
+      })
+      my.httpRequest({
+        url: app.baseServerUrl + '/item/unlike',
+        data: {
+          itemId: this.data.currentObj.id,
+          userId: this.data.userInfo.id
+        },
+        method: 'POST',
+        success: ((res) => {
+          if (res.data.msg === 'OK' && res.data.status === 200) {
+            my.showToast({
+              content: '取消收藏成功!'
+            });
+          } else {
+            my.showToast({
+              content: '取消收藏失败!'
+            });
+          }
+        }),
+        fail: ((err) => {
+          console.log(err)
+          my.showToast({
+            content: '取消收藏失败!'
+          });
+        })
+      });
+    }
   },
   // 加入购物车
   addToCart (e) {
