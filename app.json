@@ -8,7 +8,8 @@
     "pages/classifylist/classifylist",
     "pages/classifydetail/classifydetail",
     "pages/confirmorder/confirmorder",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/payment/payment"
   ],
   "window": {
     "defaultTitle": "imooc购物",

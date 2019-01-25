@@ -1,0 +1,66 @@
+page {
+  display: flex;
+  flex-direction: column;
+  background: #f2f5f8;
+  padding-bottom: 100rpx;
+}
+.payments {
+  margin-top: 10rpx;
+  background: white;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  padding-bottom: 26rpx;
+}
+.choose-payment {
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  color: gray;
+  margin-top: 16rpx;
+  line-height: 40rpx;
+}
+.payment-ico {
+  width: 44rpx;
+  height: 44rpx;
+}
+.payment-words {
+  margin-left: 20rpx;
+  flex-grow: 1;
+}
+.rdo-display {
+  margin-right: 20rpx;
+}
+/* 底部 */
+.bottom-operator {
+  background: white;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.total-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 36rpx 20rpx;
+  width: 65%;
+}
+.total-words {
+  color: gray;
+}
+.total-amount {
+  color: #ff6699;
+  font-weight: bold;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+}
+.submit-order {
+  color: white;
+  background: #ff6699;
+  width: 35%;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}

@@ -136,9 +136,10 @@ Page({
               my.setStorageSync({ key: 'cart_item_id_array', data: JSON.stringify(cart_item_id_array) })
               // my.setStorageSync({ key: 'cart_item_id_array', data: result })
               my.removeStorageSync({ key: 'pcart_item_id_array' })
-              my.switchTab({
-                url: '../index/index'
-              })
+              // 跳转到订单，就不让它返回了
+              my.redirectTo({
+                url: `../payment/payment?orderid=${orderid}&orderprice=${this.data.totalPrice}`
+              });
             }
           } else {
             my.alert({ title: '提交失败', content: '系统错误了哟!~' })
