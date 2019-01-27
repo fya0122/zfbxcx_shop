@@ -100,7 +100,7 @@ Page({
         method: 'POST',
         data: {
           itemStr: itemStr,
-          buyerId: userInfo.alipayUserId,
+          buyerId: userInfo.id,
           remark: this.data.orderRemark || '',
           addressId: this.data.defaultAddressInfo ? this.data.defaultAddressInfo.id : ''
         },
@@ -137,7 +137,7 @@ Page({
               // my.setStorageSync({ key: 'cart_item_id_array', data: result })
               my.removeStorageSync({ key: 'pcart_item_id_array' })
               // 跳转到订单，就不让它返回了
-              my.redirectTo({
+              my.navigateTo({
                 url: `../payment/payment?orderid=${orderid}&orderprice=${this.data.totalPrice}`
               });
             }

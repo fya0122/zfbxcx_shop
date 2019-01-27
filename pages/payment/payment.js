@@ -2,7 +2,8 @@ const app = getApp()
 Page({
   data: {
     orderid: '',
-    orderprice: ''
+    orderprice: '',
+    tradeNo: ''
   },
   onLoad (e) {
     const orderid = e.orderid
@@ -17,25 +18,38 @@ Page({
   // 支付宝支付
   doAlipay () {
     if (this.data.orderid) {
+      const qq = 1144642211
+      const orderId = this.data.orderid
       my.httpRequest({
-        url: app.baseServerUrl + `/team/alipay?orderId=${this.data.orderid}&qq=1144642211`,
-        header: {
-          'content-type': 'application/json'
+        url: app.baseServerUrl + '/team/alipay',
+        data: {
+          orderId: orderId,
+          qq: qq
         },
-        dataType: 'json',
         method: 'POST',
         success: ((res) => {
-          console.log(res)
+          if (res.data.msg === 'OK' && res.data.status === 200 && res.data.data) {
+            this.setData({
+              tradeNo: res.data.data
+            })
+          }
+        }),
+        fail: ((err) => {
+          console.log(err)
+        }),
+        complete: (() => {
+          my.hideNavigationBarLoading();
         })
       });
     } else {
       my.alert({
-        title: '系统错误!错误码：1029' 
+        title: '系统错误!错误码：1029',
+        success: ((res) => {
+          my.switchTab({
+            url: '../index/index'
+          });
+        }) 
       });
-      my.switchTab({
-        url: '../index/index'
-      });
-      my.clearStorageSync();
     }
   }
 });
