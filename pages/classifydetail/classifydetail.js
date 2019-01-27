@@ -245,8 +245,8 @@ Page({
   // 放入购物车
   cartItemIncrease (id) {
     let shoppingCart = my.getStorageSync({ key: 'cart_item_id_array' }).APDataStorage || my.getStorageSync({ key: 'cart_item_id_array' }).data
-    if (shoppingCart !== null && shoppingCart !== undefined) { // 本地有这个购物车
-      shoppingCart = JSON.parse(shoppingCart)
+    shoppingCart = JSON.parse(shoppingCart)
+    if (shoppingCart && shoppingCart !== null && shoppingCart !== undefined) { // 本地有这个购物车
       const result = shoppingCart.find(e => e.id === id)
       if (result) { // 如果购物车有这个id，那么这个id的数量+1
         result.counts = result.counts + 1

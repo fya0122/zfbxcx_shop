@@ -19,24 +19,57 @@
 </view>
 <!-- 下面订单的tab -->
 <view class="order-tab">
-  <view class="every-status">
-    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/all.png"/>
-    <view class="status-words">全部</view>
-  </view>
-  <view class="every-status">
-    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/wait-pay.png"/>
-    <view class="status-words">待付款</view>
-  </view>
-  <view class="every-status">
-    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/wait-receive.png"/>
-    <view class="status-words">待收货</view>
-  </view>
-  <view class="every-status">
-    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/done.png"/>
-    <view class="status-words">已完成</view>
-  </view>
-  <view class="every-status">
-    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/canceled.png"/>
-    <view class="status-words">已取消</view>
-  </view>
+  <block a:for="{{my_tabs}}">
+    <view class="every-status" data-id="{{item.id}}" data-status="{{item.status}}" onTap="selectIcon">
+      <image class="order-status-ico" src="{{defaultIndex === item.id ? item.selectIcon : item.icon}}"/>
+      <view class="status-words">{{item.txt}}</view>
+    </view>
+  </block>
 </view>
+<!-- 循环订单 -->
+<block a:for="{{orderList}}">
+  <view class="orders">
+    <!-- 顶部的，订单不是取消，就是完成 -->
+    <view class="status-block splitter">
+      <view class="gray-words">{{item.status === 40 ? '交易完成' : item.status === 50 ? '已取消' : '交易进行中'}}</view>
+    </view>
+    <!-- 商品展示的区域 -->
+    <block a:for="{{item.subItemsList}}">
+        <view class="item splitter">
+          <image src="{{item.itemImage}}" class="items-cover"/>
+          <view class="item-title">
+              {{item.itemName}}
+          </view>
+          <view class="price-info">
+              <view class="item-price">
+                  ￥{{item.priceY}}
+              </view>
+              <view class="item-counts">
+                  <view>{{item.buyCounts}}</view>
+                  <view>件</view>
+              </view>
+          </view>
+        </view>
+    </block>
+    <!-- 全国包邮、总金额区域 -->
+    <view class="money-block splitter">
+      <view class="normal-words">
+        <view class="gray-words">全国包邮</view>
+        <view class="gray-words">总计:</view>
+      </view>
+      <view>
+        <view class="money-words">￥{{item.amountY}}</view>
+      </view>
+    </view>
+    <!-- 下面的操作区域 -->
+    <view class="go-pay">
+      <block a:if="{{item.status == 10}}">
+        <view class="btn-cancel" onTap="cancelOrder" data-order-id="{{item.id}}">取消订单</view>
+        <view class="btn-pay" onTap="payAgain" data-order-id="{{item.id}}">付 款</view>
+      </block>
+      <block a:if="{{item.status == 20}}">
+        <view class="btn-pay" onTap="confirmAccept" data-order-id="{{item.id}}">确认收货</view>
+      </block>
+    </view>
+  </view>
+</block>
