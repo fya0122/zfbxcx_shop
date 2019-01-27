@@ -17,3 +17,26 @@
   </view>
   <image onTap="logout" class="set-ico" src="../../resources/icon/smallIco/settings.png"/>
 </view>
+<!-- 下面订单的tab -->
+<view class="order-tab">
+  <view class="every-status">
+    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/all.png"/>
+    <view class="status-words">全部</view>
+  </view>
+  <view class="every-status">
+    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/wait-pay.png"/>
+    <view class="status-words">待付款</view>
+  </view>
+  <view class="every-status">
+    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/wait-receive.png"/>
+    <view class="status-words">待收货</view>
+  </view>
+  <view class="every-status">
+    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/done.png"/>
+    <view class="status-words">已完成</view>
+  </view>
+  <view class="every-status">
+    <image class="order-status-ico" src="../../resources/icon/smallIco/orderstatus/canceled.png"/>
+    <view class="status-words">已取消</view>
+  </view>
+</view>

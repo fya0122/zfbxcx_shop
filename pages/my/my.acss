@@ -61,3 +61,28 @@ page {
   height: 40rpx;
   margin-top: 12rpx;
 }
+/* 下面订单的tab */
+.order-tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: white;
+  margin-top: 20rpx;
+  padding: 22rpx 16rpx;
+}
+.every-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.order-status-ico {
+  width: 40rpx;
+  height: 40rpx;
+  align-items: center;
+}
+.status-words {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #868585;
+}

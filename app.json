@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/my/my",
     "pages/index/index",
     "pages/addressinfo/addressinfo",
     "pages/addresslist/addresslist",
@@ -8,7 +9,6 @@
     "pages/classifylist/classifylist",
     "pages/classifydetail/classifydetail",
     "pages/confirmorder/confirmorder",
-    "pages/my/my",
     "pages/payment/payment"
   ],
   "window": {
