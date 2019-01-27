@@ -3,7 +3,6 @@ Page({
   data: {
     orderid: '',
     orderprice: '',
-    tradeNo: ''
   },
   onLoad (e) {
     const orderid = e.orderid
@@ -29,9 +28,51 @@ Page({
         method: 'POST',
         success: ((res) => {
           if (res.data.msg === 'OK' && res.data.status === 200 && res.data.data) {
-            this.setData({
-              tradeNo: res.data.data
-            })
+            // 唤起收银台
+            if (res.data.data) {
+              my.tradePay({
+                tradeNO: res.data.data,
+                success: ((res) =>{
+                  console.log(res)
+                  if (res.resultCode === '9000') {
+                    my.alert({
+                      title: '支付成功!',
+                      success: ((res) => {
+                        my.switchTab({
+                          url: '../my/my'
+                        });
+                      }) 
+                    });
+                  } else {
+                    my.alert({
+                      title: '唤起收银台失败',
+                      success: (() => {
+                        my.switchTab({
+                          url: '../index/index',
+                          success: (() => {
+                            my.clearStorageSync()
+                          })
+                        });
+                      }) 
+                    });
+                  }
+                }),
+                fail: ((err) => {
+                  console.log(err)
+                  my.alert({
+                    title: '唤起收银台失败',
+                    success: (() => {
+                      my.switchTab({
+                        url: '../index/index',
+                        success: (() => {
+                          my.clearStorageSync()
+                        })
+                      });
+                    }) 
+                  });
+                })
+              });
+            }
           }
         }),
         fail: ((err) => {
